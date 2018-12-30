@@ -170,6 +170,10 @@ my_awesome_function(3)
 
 
 # In[69]:
+# Python functions return `None` if no return statement is specified:
+
+result = my_awesome_function(3)
+result is None
 
 
 def my_awesome_function(x):
@@ -180,7 +184,8 @@ def my_awesome_function(x):
 # In[70]:
 
 
-my_awesome_function(7)
+result = my_awesome_function(7)
+result
 
 
 # ### Local and Global Scope
