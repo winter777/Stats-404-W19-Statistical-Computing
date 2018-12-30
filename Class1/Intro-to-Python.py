@@ -64,6 +64,17 @@ grade += 5
 grade
 
 
+# ## Comments
+# Tip: Add an in-line comment to your code to explain 'why' that line of code is the way it is, esp. if it's not obvious from reading the code.
+
+
+
+# This is a one-line comment
+
+# This is a multi-line
+# comment
+
+
 # ## Control Flow
 # - NOTE: Booleans in Python are True and False, not TRUE and FALSE (as in R)
 # - NOTE: Indentation, not {} indicate groups of lines in Python
@@ -164,6 +175,11 @@ def my_awesome_function(x):
 
 
 # In[67]:
+# Note: `"""Example of function with parameters."""` is called a docstring, which can be turned into Python documentation (more on thsi below). Recommendation for what to include in a docstring:
+# - description of function
+# - explanation of function arguments and return values
+# - example usage
+
 
 
 my_awesome_function(3)
