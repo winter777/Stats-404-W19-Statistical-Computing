@@ -730,7 +730,24 @@ print(f"Dictionary 1: {dictionary1} and Dictionary 2: {dictionary2}")
 [(values, keys) for (keys, values) in course_information.items()]
 
 
-# # Caveats: Python vs R
+# # Directories in Python
+
+
+
+import os
+print(os.getcwd())
+
+
+
+
+os.chdir("..")
+print(os.getcwd())
+
+
+
+
+os.path.join(os.getcwd(), "file_name.csv")
+#   - Having an extra bracket when subsetting
 
 # - Python is 0 offset vs R is 1-offset
 # - Python passes by reference vs R by value
