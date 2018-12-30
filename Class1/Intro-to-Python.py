@@ -243,6 +243,8 @@ def my_awesome_function(x):
 my_awesome_function('a')
 
 
+# 10 minute break
+
 # ## Python Types
 # Reference for further reading: https://automatetheboringstuff.com/chapter4/ and https://data-flair.training/blogs/python-data-structures-tutorial/
 
@@ -588,6 +590,8 @@ course_information.items()
 
 course_information.get('names', 'Missing Name')
 
+
+# 10 minute break
 
 # ## Passing by Reference (Python) vs Passing by Value (R)
 # **Note**: Common cause of bugs in code.
