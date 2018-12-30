@@ -679,6 +679,14 @@ print(f"Dictionary 1: {dictionary1} and Dictionary 2: {dictionary2}")
 [(values, keys) for (keys, values) in course_information.items()]
 
 
+# # Caveats: Python vs R
+
+# - Python is 0 offset vs R is 1-offset
+# - Python passes by reference vs R by value
+# - Python ranges include lower bound but not upper bound
+# - Python code blocks are indented vs R uses `{}`
+# - Python functions return `None` if `return` is not explicitly specified
+
 # # In-Class Lab -- Due at end of class:
 
 # Coding Tic-Tac-Toe, per: https://automatetheboringstuff.com/chapter5/
