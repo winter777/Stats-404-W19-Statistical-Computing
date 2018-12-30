@@ -188,6 +188,13 @@ my_awesome_function(3)
 # In[69]:
 # Python functions return `None` if no return statement is specified:
 
+# Copied from previous slide to make comparison easier:
+def my_awesome_function(x):
+    """Example of function with parameters."""
+    print(f"Initial value: {x}")
+    print(f"Previous value: {x - 1}")
+    print(f"Next value: {x + 1}")
+
 result = my_awesome_function(3)
 result is None
 
