@@ -211,6 +211,10 @@ result = my_awesome_function(7)
 result
 
 
+# Tip: Name functions to make it obvious to the next person (or you in 6 months) what the function does:
+# `create_filename_with_timestamp()` vs `format_string()`.
+# 
+# What's a better name for `my_awesome_function()`?
 # ### Local and Global Scope
 
 # Global scope cannot access local variables:
