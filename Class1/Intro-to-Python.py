@@ -215,6 +215,30 @@ result
 # `create_filename_with_timestamp()` vs `format_string()`.
 # 
 # What's a better name for `my_awesome_function()`?
+
+# ### Loading Third-Party Functions/Modules
+
+# Import whole module:
+
+
+
+import random
+random.seed(2019)
+random.randint(0, 5)
+
+
+# Import two functions from module:
+
+
+
+from math import fabs, floor, pi, sin
+print(fabs(-2))
+print(floor(3.2))
+print(sin(pi))
+
+
+# Tip: Either format is valid; focus on what makes code more readable and understadable (esp. when bugs happen).
+
 # ### Local and Global Scope
 
 # Global scope cannot access local variables:
