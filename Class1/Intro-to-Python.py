@@ -747,13 +747,96 @@ print(os.getcwd())
 
 
 os.path.join(os.getcwd(), "file_name.csv")
+
+
+# # Finding Bugs, Understanding Errors and Getting Help
+
+# ## Common Bugs and Fixes
+
+# ### Common Errors
+
+# `TypeError: can only concatenate str (not "int") to str` 
+# - **Possible cause**: trying to concatenate numbers and strings in a `print()` statement
+# - **Possible solution**: use f-strings
+
+# `SyntaxError: invalid syntax`
+# - **Possible causes**: 
+#   - Incorrect spelling (of the function, variable, etc.)
+#   - Including a `>>>` when copying code from the Console
+#   - Specifying an incorrect closing symbol (rather than a parenthesis) at the end of a function
 #   - Having an extra bracket when subsetting
 
+# Trailing `...`:
+# - **Possible causes**: 
+#   - Not closing a function call with a parenthesis
+#   - Not closing brackets when subsetting
+
+# `TypeError: unsupported operand type(s) for +: 'NoneType' and ` something else
+# - **Possible cause**: 
+#   - Performing an operation in-place (such as `sort()`) and assigning result to another variable; because the operation was done in-place, the new variable has a value of `None`
+
+# ### Common Bugs
 # - Python is 0 offset vs R is 1-offset
-# - Python passes by reference vs R by value
+#   - e.g. especially when subsetting
 # - Python ranges include lower bound but not upper bound
+#   - e.g. especially when in a loop
+# - Python passes by reference vs R by value
+#   - e.g. using `copy.copy` vs `copy.deepcopy`
 # - Python code blocks are indented vs R uses `{}`
-# - Python functions return `None` if `return` is not explicitly specified
+# - Python functions return `None` if `return` is not explicitly specified 
+
+# ## Debugger
+
+# (Brief) overview of [pdb](https://docs.python.org/3/library/pdb.html) module.
+# 
+# When executing a script:
+# - Add line `import pdb` to your script
+# - When running script from command line, call it as follows:
+# `python -m pdb example.py`
+# - If/when code breaks, you'll enter the code base at the break point
+# 
+# When working in interactive notebook, add %pdb to the cell.
+# 
+# You can add a breakpoint, to step into the code base at designated line, by:
+# - Add line `import pdb` to your script
+# - Add line `pdb.set_trace()` above the line you want to look into
+# 
+# Type `q` to exit the debugger; see [documentation](https://docs.python.org/3/library/pdb.html) for more debugger commands.
+
+
+
+def my_awesome_function(x):
+    """Example of error handling."""
+    try:
+        y = x + 2
+    except TypeError as e:
+        print("Error: Invalid argument for x -- numeric input expected.")
+        raise e
+
+
+
+
+get_ipython().run_line_magic('pdb', '')
+my_awesome_function('a')
+
+
+# ![Screenshot of debugger](pdb_image.png)
+
+# ## Getting Help
+
+
+
+get_ipython().run_line_magic('pinfo', 'randint')
+
+
+
+
+help(random.randint)
+
+
+# Tip: When all else fails, Google your error:
+# 
+# EX: `TypeError: can only concatenate str (not "int") to str`
 
 # # In-Class Lab -- Due at end of class:
 
