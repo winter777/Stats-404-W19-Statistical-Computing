@@ -693,3 +693,5 @@ print(f"Dictionary 1: {dictionary1} and Dictionary 2: {dictionary2}")
 # ```
 # - Use the [random module](https://docs.python.org/3/library/random.html) to randomly choose (available) locations for (alternating) placing of Xs and Os
 # - Declare winner or tie
+# 
+# Deliverable to turn-in: push code to your folder on class repository
