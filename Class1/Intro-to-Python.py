@@ -320,7 +320,7 @@ print(type(3.0))
 [1, 3, 'abc', True, [2, 3]]
 
 
-# ![Slice notation explained](slice_notation_explained.jpg)
+# ![Slice notation explained](images/slice_notation_explained.jpg)
 # 
 # [Reference](https://stackoverflow.com/questions/509211/understanding-pythons-slice-notation)
 # 
@@ -821,7 +821,7 @@ get_ipython().run_line_magic('pdb', '')
 my_awesome_function('a')
 
 
-# ![Screenshot of debugger](pdb_image.png)
+# ![Screenshot of debugger](images/pdb_image.png)
 
 # ## Getting Help
 
