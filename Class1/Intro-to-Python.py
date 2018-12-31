@@ -931,6 +931,7 @@ my_awesome_function('a')
 get_ipython().run_line_magic('pinfo', 'randint')
 
 
+get_ipython().run_line_magic('pinfo', 'my_awesome_function')
 
 
 help(random.randint)
