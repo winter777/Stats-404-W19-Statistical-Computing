@@ -535,6 +535,12 @@ y1, y2, y3 = tuple([4, 5, 6])
 print(f"{y1} {y2} {y3}")
 
 
+def my_awesome_function(x):
+    """Example of function with parameters."""
+    return x, x-1, x+1
+
+current_value, previous_value, next_value = my_awesome_function(3)
+print(f"Current value: {current_value}, Previous value: {previous_value}, Next value: {next_value}")
 # ### Sets
 # Sets are **mutable** tuples with unique entries that allow set operations.
 
