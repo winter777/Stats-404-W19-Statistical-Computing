@@ -830,13 +830,13 @@ list(map(lower_fcn, course_information.keys()))
 
 
 
-# # Finding Bugs, Understanding Errors and Getting Help
 ex_list = [1, 'Hello', 5]
 ex_tuple = ('abc', 3, 'bcd')
 
 list(zip(ex_list, ex_tuple))
 
 
+# # Understanding Errors, Fixing Bugs and Getting Help
 
 # ## Common Bugs and Fixes
 
