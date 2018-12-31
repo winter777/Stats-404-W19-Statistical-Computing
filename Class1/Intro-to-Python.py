@@ -654,7 +654,45 @@ course_information.items()
 course_information.get('names', 'Missing Name')
 
 
+# ## Directories in Python
+
+
+
+import os
+print(os.getcwd())
+
+
+
+
+os.chdir("..")
+print(os.getcwd())
+
+
+
+
+os.path.join(os.getcwd(), "file_name.csv")
+
+
 # 10 minute break
+
+# # Intermediate Python
+
+# ## List, Typle and Dictionary Comprehension
+# List/Tuple/Dictioary comprehension is an alternative to a for-loop that's a few lines long.
+
+
+
+# List comprehension:
+[(values, keys) for (keys, values) in course_information.items()]
+
+
+
+
+# Dictionary comprehension:
+{values: keys for (keys, values) in course_information.items()}
+
+
+# What would `tuple` comprehension look like?
 
 # ## Passing by Reference (Python) vs Passing by Value (R)
 # **Note**: Common cause of bugs in code.
@@ -754,32 +792,23 @@ print(f"Dictionary 1: {dictionary1}")
 print(f"Dictionary 2: {dictionary2}")
 
 
-# ## List Comprehension
-# List comprehension is an alternative to a for-loop that's a few lines long.
 
 # In[251]:
 
 
-[(values, keys) for (keys, values) in course_information.items()]
-
-
-# # Directories in Python
-
-
-
-import os
-print(os.getcwd())
 
 
 
 
-os.chdir("..")
-print(os.getcwd())
 
 
 
 
-os.path.join(os.getcwd(), "file_name.csv")
+
+
+
+
+
 
 
 # # Finding Bugs, Understanding Errors and Getting Help
