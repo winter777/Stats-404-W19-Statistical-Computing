@@ -326,7 +326,7 @@ print(type(3.0))
 # 
 # [Reference](https://stackoverflow.com/questions/509211/understanding-pythons-slice-notation)
 # 
-# Note: range includes lower bound, but not upper bound.
+# Note/caution: range includes lower bound, but not upper bound -- and starts at 0 (!).
 # 
 # `Name = ['F', 'u', 'd', 'g', 'e']`
 
@@ -392,6 +392,7 @@ for letter in Name:
 # In[156]:
 
 
+# 'Unpacking' list:
 x1, x2, x3 = [1, 2, 3]
 print(f"{x1} {x2} {x3}")
 
@@ -525,6 +526,7 @@ list(Name_tuple)
 
 
 # In[210]:
+# Unpacking tuples:
 
 
 y1, y2, y3 = tuple([4, 5, 6])
@@ -816,21 +818,33 @@ os.path.join(os.getcwd(), "file_name.csv")
 
 # ## Debugger
 
-# (Brief) overview of [pdb](https://docs.python.org/3/library/pdb.html) module.
+# (Very brief) Overview of debugging in Python -- not via `print()` statements:
 # 
-# When executing a script:
+# **1. Starting debugger**
+# 
+# Option 1: When executing a script:
 # - Add line `import pdb` to your script
 # - When running script from command line, call it as follows:
 # `python -m pdb example.py`
 # - If/when code breaks, you'll enter the code base at the break point
 # 
-# When working in interactive notebook, add %pdb to the cell.
-# 
+# Option 2: When working in notebook, add `%pdb` to:
+# - a cell you're interested in debugging, or 
+# - at the top, to do interactive debugging any time an error is thrown
+
+# **2. Adding breakpoints**
 # You can add a breakpoint, to step into the code base at designated line, by:
 # - Add line `import pdb` to your script
 # - Add line `pdb.set_trace()` above the line you want to look into
 # 
-# Type `q` to exit the debugger; see [documentation](https://docs.python.org/3/library/pdb.html) for more debugger commands.
+# **3. Exiting debugger**
+# Type `q` to exit the debugger.
+# 
+# **4. References**
+# Please see:
+# - [pdb documentation](https://docs.python.org/3/library/pdb.html) for more debugger commands
+# - [IPyhton documentation](https://ipython.readthedocs.io/en/stable/interactive/magics.html) for other notebook magic commands
+# 
 
 
 
@@ -843,6 +857,7 @@ def my_awesome_function(x):
         raise e
 
 
+# Note: It's better to `raise` an error thrown by function, than silently letting the function fail, via `print`ing the error.
 
 
 get_ipython().run_line_magic('pdb', '')
