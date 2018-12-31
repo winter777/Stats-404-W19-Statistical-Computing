@@ -798,26 +798,45 @@ print(f"Dictionary 1: {dictionary1}")
 print(f"Dictionary 2: {dictionary2}")
 
 
+# ## Functional Programming
+# Type of programming that takes an input and get output, similar to mathematical functions; for more information, see this [blog post](https://medium.com/@rohanrony/functional-programming-in-python-1-lambda-map-filter-reduce-zip-8739ea144186) and this [one](https://www.programiz.com/python-programming/anonymous-function)
 
 # In[251]:
+# ### lambda (functions)
+# Lambda functions are anonymous functions, i.e. defined without a name. They are typically ~1-2 lines of code.
+
+
+
+add_one_fcn = lambda x: x + 1
+add_one_fcn(2)
+
+
+# ### map
+# `map()` requires a function and a list; it will apply the function specified to every item in the list.
+
+
+
+list(map(add_one_fcn, [3, 6, -2]))
 
 
 
 
+lower_fcn = lambda x: x.lower()
+list(map(lower_fcn, course_information.keys()))
 
 
-
-
-
-
-
-
-
-
+# ### zip
+# `zip()` combines two objects (of same size) to create one new one
 
 
 
 # # Finding Bugs, Understanding Errors and Getting Help
+ex_list = [1, 'Hello', 5]
+ex_tuple = ('abc', 3, 'bcd')
+
+list(zip(ex_list, ex_tuple))
+
+
 
 # ## Common Bugs and Fixes
 
