@@ -442,6 +442,8 @@ Name
 
 # **Caution:** `sort()` method sorts in-place, which means that the function returns `None`. A common bug is assigning output of `sort()` to another variable that you then operate on -- but it's value is now `None` (!).
 
+print([3, 2, 1].sort())
+print(sorted([3,2,1]))
 # ### Strings
 
 # In[165]:
@@ -805,6 +807,8 @@ os.path.join(os.getcwd(), "file_name.csv")
 # `TypeError: unsupported operand type(s) for +: 'NoneType' and ` something else
 # - **Possible cause**: 
 #   - Performing an operation in-place (such as `sort()`) and assigning result to another variable; because the operation was done in-place, the new variable has a value of `None`
+# - **Possible solution**: 
+#   - Use `sorted(list_variable)` vs. `list_variable.sort()`
 
 # ### Common Bugs
 # - Python is 0 offset vs R is 1-offset
