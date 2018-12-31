@@ -694,14 +694,22 @@ print(f"spam: {spam} and cheese: {cheese}")
 # In[228]:
 
 
+# --- Example 3:
 variable1 = [1, 3, [[2], 4]]
+# Make shallow copy of variable:
+variable2 = copy.copy(variable1)
 # Make deep copy of variable:
-variable2 = copy.deepcopy(variable1)
-print(f"Variable 1: {variable1} and Variable 2: {variable2}")
-variable2[0] = 10
-print(f"Variable 1: {variable1} and Variable 2: {variable2}")
-variable2[2][0] = [-1]
-print(f"Variable 1: {variable1} and Variable 2: {variable2}")
+variable3 = copy.deepcopy(variable1)
+print(f"Variable 1: {variable1}") 
+print(f"Variable 2: {variable2} <- copy.copy of variable 1")
+print(f"Variable 3: {variable3} <- copy.deepcopy of variable 1")
+
+variable1[2][0] = [-1]
+print()
+print("--- After updating an element in sub-list of variable 1:")
+print(f"Variable 1: {variable1}") 
+print(f"Variable 2: {variable2} <- copy.copy of variable 1")
+print(f"Variable 3: {variable3}  <- copy.deepcopy of variable 1")
 
 
 # ### Dictionaries
@@ -709,25 +717,37 @@ print(f"Variable 1: {variable1} and Variable 2: {variable2}")
 # In[247]:
 
 
+# Example 1:
 dictionary1 = {'key1': 'value1',
                'key2': 'value2'
               }
 dictionary2 = dictionary1
-print(f"Dictionary 1: {dictionary1} and Dictionary 2: {dictionary2}")
+print(f"Dictionary 1: {dictionary1}")
+print(f"Dictionary 2: {dictionary2}")
+
 dictionary2['key2'] = '2'
-print(f"Dictionary 1: {dictionary1} and Dictionary 2: {dictionary2}")
+print()
+print("--- After updating 'key2':")
+print(f"Dictionary 1: {dictionary1}")
+print(f"Dictionary 2: {dictionary2}")
 
 
 # In[248]:
 
 
+# Example 2:
 dictionary1 = {'key1': 'value1',
                'key2': 'value2'
               }
 dictionary2 = copy.deepcopy(dictionary1)
-print(f"Dictionary 1: {dictionary1} and Dictionary 2: {dictionary2}")
+print(f"Dictionary 1: {dictionary1}")
+print(f"Dictionary 2: {dictionary2}")
+
 dictionary2['key2'] = '2'
-print(f"Dictionary 1: {dictionary1} and Dictionary 2: {dictionary2}")
+print()
+print("--- After updating 'key2':")
+print(f"Dictionary 1: {dictionary1}")
+print(f"Dictionary 2: {dictionary2}")
 
 
 # ## List Comprehension
