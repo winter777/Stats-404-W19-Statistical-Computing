@@ -2,6 +2,8 @@
 # coding: utf-8
 
 get_ipython().run_line_magic('pdb', '')
+import os
+ORIG_DIR = os.getcwd()
 # # Introduction to Python
 # 
 # ## Python Basics
@@ -659,28 +661,34 @@ course_information.get('names', 'Missing Name')
 # ### Lists
 
 # In[226]:
+# --- Example 1:
+spam = [0, 1, 2, 3, 4, 5]
+cheese = spam
+print(f"spam: {spam} and cheese: {cheese}")
 
 
-variable1 = [1, 3, [2,4]]
-# Only reference is copied, not value:
-variable2 = variable1
-print(f"Variable 1: {variable1} and Variable 2: {variable2}")
-variable2[0] = 10
-print(f"Variable 1: {variable1} and Variable 2: {variable2}")
+# ![Memory location of both variables](./images/pass_by_reference_init.jpg)
+
+
+cheese[1] = 'Hello'
+print(f"spam: {spam} and cheese: {cheese}")
+
+
 
 
 # In[227]:
+os.chdir(ORIG_DIR)
 
 
+# ![Memory location of both variables](./images/pass_by_reference_after_update.jpg)
+# --- Example 2:
 import copy
-variable1 = [1, 3, [2, 4]]
+spam = [0, 1, 2, 3, 4, 5]
 # Make (shallow) copy of variable:
-variable2 = copy.copy(variable1)
-print(f"Variable 1: {variable1} and Variable 2: {variable2}")
-variable2[0] = 10
-print(f"Variable 1: {variable1} and Variable 2: {variable2}")
-variable2[2] = [-1]
-print(f"Variable 1: {variable1} and Variable 2: {variable2}")
+cheese = copy.copy(spam)
+print(f"spam: {spam} and cheese: {cheese}")
+cheese[1] = 'Hello'
+print(f"spam: {spam} and cheese: {cheese}")
 
 
 # In[228]:
