@@ -932,7 +932,7 @@ list(zip(ex_list, ex_tuple))
 # **4. References**
 # Please see:
 # - [pdb documentation](https://docs.python.org/3/library/pdb.html) for more debugger commands
-# - [IPyhton documentation](https://ipython.readthedocs.io/en/stable/interactive/magics.html) for other notebook magic commands
+# - Type `%lsmagic` to see all available magic methods and see [IPyhton documentation](https://ipython.readthedocs.io/en/stable/interactive/magics.html) for other notebook magic commands
 # 
 
 
