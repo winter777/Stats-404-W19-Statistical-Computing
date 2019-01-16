@@ -974,22 +974,15 @@ help(random.randint)
 
 # # In-Class Lab -- Due at end of class:
 
-# Coding Tic-Tac-Toe, per: https://automatetheboringstuff.com/chapter5/
-# 
+# **Lab**: Coding Tic-Tac-Toe, per: https://automatetheboringstuff.com/chapter5/
 # - Set-up a Tic-Tac-Toe board as a dictionary: 
 # ```
-# theBoard = {'top-L': ' ',
-#             'top-M': ' ',
-#             'top-R': ' ',
-#             'mid-L': ' ',
-#             'mid-M': ' ',
-#             'mid-R': ' ',
-#             'low-L': ' ',
-#             'low-M': ' ',
-#             'low-R': ' '
-#            }
+# theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
+#               'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
+#               'low-L': ' ', 'low-M': ' ', 'low-R': ' '
+#              }
 # ```
-# - Use the [random module](https://docs.python.org/3/library/random.html) to randomly choose (available) locations for (alternating) placing of Xs and Os
+# - Use the [random module](https://docs.python.org/3/library/random.html) to randomly choose (available) locations for (alternating) placing of `X` and `O`. *Hint*: use a seed.
 # - Declare winner or tie
 # 
 # **Submitting your lab**:
