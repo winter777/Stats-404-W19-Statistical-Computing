@@ -988,5 +988,5 @@ help(random.randint)
 # **Submitting your lab**:
 # - Create branch in your *forked* copy on class repository
 # - Commit your solution
-# - Create pull request relative to *your* master master branch
+# - Create pull request relative to *your* master branch
 # - Assign me and TA as reviewers
