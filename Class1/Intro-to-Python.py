@@ -992,4 +992,8 @@ help(random.randint)
 # - Use the [random module](https://docs.python.org/3/library/random.html) to randomly choose (available) locations for (alternating) placing of Xs and Os
 # - Declare winner or tie
 # 
-# Deliverable to turn-in: push code to your *forked* copy on class repository
+# **Submitting your lab**:
+# - Create branch in your *forked* copy on class repository
+# - Commit your solution
+# - Create pull request relative to *your* master master branch
+# - Assign me and TA as reviewers
