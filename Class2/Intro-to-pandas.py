@@ -66,8 +66,9 @@ inspect.signature(pd.read_csv)
 # ### Step 2: Basic Checks
 # - size
 # - shape
-# - values
-# - `<your favorite check>`
+# - values/ranges
+# - degree of missingness
+# - `<your favorite check(s)>`
 
 # In[18]:
 
@@ -131,3 +132,13 @@ df.info()
 #   - `not []`
 #   - `not ""`
 #   - etc.
+# Topic of handling missing data is an important topic outside scope of class. Recommend book by [Little and Rubin](https://www.amazon.com/Statistical-Analysis-Missing-Probability-Statistics-dp-0470526793/dp/0470526793/ref=mt_hardcover?_encoding=UTF8&me=&qid=) on the subject. 
+# 
+# Recall that **it's not recommended** to:
+# - drop all missing values, OR
+# - fill-in missing values with mean (for example)
+# to not bias your data.
+# 
+# It's better to:
+# - understand why the data was missing in first place AND, if need to,
+# - fill-in with a `missing` category: `dataset.fillna('Missing')`
