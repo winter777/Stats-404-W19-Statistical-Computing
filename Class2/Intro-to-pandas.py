@@ -142,3 +142,84 @@ df.info()
 # It's better to:
 # - understand why the data was missing in first place AND, if need to,
 # - fill-in with a `missing` category: `dataset.fillna('Missing')`
+# ## Subsetting
+
+# In[22]:
+
+
+# Arrival Delays of 1.5+ hours:
+df[ df['ArrDelay'] >= 90]
+
+
+# In[23]:
+
+
+# Departure Delays of 1+ hours:
+df['DepDelay'][ df['DepDelay'] >= 60].count()
+
+
+# **Warning** when subsetting and assigning in `pandas`: 
+# - When you subset a data set, you can access a view or copy [reference]](https://www.dataquest.io/blog/settingwithcopywarning/) and [[reference]](http://pandas.pydata.org/pandas-docs/stable/indexing.html?highlight=set#indexing-view-versus-copy).
+# - If you try to assign values on your subset, you will get a `SettingWithCopy` warning, to make sure you check that you're assigning values to the data set you expect (e.g. view or copy).
+
+# In[24]:
+
+
+# Recall our data set:
+df_tmp
+
+
+# Example of warning:
+
+# In[25]:
+
+
+df_tmp[df_tmp['col_name'] == 5]
+
+
+# In[26]:
+
+
+df_tmp[df_tmp['col_name'] == 5]['col_name'] = -5
+
+
+# ![Subsetting in `pandas`](images/pandas-subsetting.png) [Reference](https://www.shanelynn.ie/select-pandas-dataframe-rows-and-columns-using-iloc-loc-and-ix/)
+
+# ### Subsetting with `loc` -- based on "**l**abels":
+
+# In[27]:
+
+
+df.loc[df['ArrDelay'] >= 90, ['Year', 'Month', 'DayofMonth', 'DayOfWeek', 'ArrDelay', 'DepDelay']]
+
+
+# ### Subsetting with `iloc` -- based on "**i**ndex":
+
+# In[28]:
+
+
+import numpy as np
+np.where(df['ArrDelay'] >= 90)
+
+
+# How can we format this to be a list?
+
+# In[29]:
+
+
+row_index = np.where(df['ArrDelay'] >= 90)[0].tolist()
+row_index
+
+
+# In[30]:
+
+
+col_index = list(range(4)) + list(range(13, 15))
+col_index
+
+
+# In[31]:
+
+
+df.iloc[row_index, col_index]
+
