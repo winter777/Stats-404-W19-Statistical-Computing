@@ -7,23 +7,38 @@
 # - ["Hacking Airline DataSet with H2O"](https://github.com/h2oai/h2o-2/wiki/Hacking-Airline-DataSet-with-H2O) -- for Airline data sets of various sizes
 
 # In[1]:
+# **Prerequisities**: `pandas` is installed in your virtual environment
 
 
 import pandas as pd
 
 
-# ## Reading-in Data
+# ## `pandas` Data Types
 
+# ### `Series`
+
+tmp = pd.Series([3, 5, -1])
+tmp
+
+tmp.values
+tmp.index
+
+
+# `DataFrame`
 # In[6]:
 
 
-df = pd.read_csv(filepath_or_buffer="https://s3.amazonaws.com/h2o-airlines-unpacked/allyears2k.csv",
-                 encoding='latin-1')
+df_tmp = pd.DataFrame([3, 5, -1], columns=['col_name'])
+df_tmp
 
 
+df_tmp.shape
+df_tmp.columns
+df_tmp['col_name'].values
 # In[10]:
 
 
+df_tmp.index
 # Alternative to ?pd.read_csv to see function arguments:
 import inspect
 inspect.signature(pd.read_csv)
