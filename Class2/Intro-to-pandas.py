@@ -223,3 +223,54 @@ col_index
 
 df.iloc[row_index, col_index]
 
+
+# ## Visual Checks
+
+# In[32]:
+
+
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+# Flight arrival delays for Friday flights in 10/1987:
+df['ArrDelay'][df['DayOfWeek'] == 5].hist(bins=50)
+
+
+# In[33]:
+
+
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+df['DayOfWeek'].value_counts(sort=False).plot(kind='barh')
+
+
+# In[34]:
+
+
+get_ipython().run_line_magic('matplotlib', 'inline')
+import matplotlib.pyplot as plt
+
+# Per http://queirozf.com/entries/pandas-dataframe-plot-examples-with-matplotlib-pyplot
+# gca stands for 'get current axis'
+ax = plt.gca()
+df['DayOfWeek'].value_counts(sort=False).plot(kind='barh',
+                                              color='0.75',
+                                              x="Number of Flights",
+                                              y="Day of Week",
+                                              ax=ax
+                                              )
+ax.set_yticklabels(['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'])
+ax.set_title("Number of Flights per Day of Week")
+ax.set_xlabel("Number of Flights")
+ax.set_ylabel("Day of Week")
+plt.show()
+
+
+# In[35]:
+
+
+# Stacked bar plot
+df_crosstab = pd.crosstab(df['DayOfWeek'], df['ArrDelay'] >= 30, normalize=True)
+df_crosstab.plot(kind='bar', stacked=True)
+
+
+# Aside: interactive graphics in Python via [`plotly`](https://plot.ly/python/)
