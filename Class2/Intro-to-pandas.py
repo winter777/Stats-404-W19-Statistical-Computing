@@ -94,3 +94,12 @@ df.describe()
 
 # **Caution**: Missing values are ignored and counts not shown.
 
+# ## Aside: Missing Values in Python
+# When you need to check for missing values -- similar to R, you can't do `variable == NaN' -- you can check for:
+# - `variable_value is None`
+# - `math.isnan(variable_value)` -- after importing the `math` library
+# - `pd.isnull(variable_value)`
+# - non-emptiness per section [Truth Value testing](https://docs.python.org/3/library/stdtypes.html): 
+#   - `not []`
+#   - `not ""`
+#   - etc.
