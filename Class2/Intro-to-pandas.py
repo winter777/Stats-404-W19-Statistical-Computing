@@ -274,3 +274,31 @@ df_crosstab.plot(kind='bar', stacked=True)
 
 
 # Aside: interactive graphics in Python via [`plotly`](https://plot.ly/python/)
+# ## Row/Column Operations
+
+# In[115]:
+
+
+# Derive quantity based on one column:
+df['ArrDelay_hours'] = df['ArrDelay'].apply(lambda x: round(x/60.0, 2))
+df[['ArrDelay', 'ArrDelay_hours']].head(5)
+
+
+# In[216]:
+
+
+# Derive quantity based on more than one column:
+def number_of_delays(arrival_delayed_flag, departure_delayed_flag):
+    """Fcn to count how many delays there were per flight."""
+    count = 0
+    if arrival_delayed_flag == 'YES':
+        count += 1
+    if departure_delayed_flag == 'YES':
+        count += 1
+    return count
+
+df['delay_count'] = df[['IsArrDelayed', 'IsDepDelayed']].apply(
+    lambda row: number_of_delays(row[0], row[1]),
+    axis=1)
+df[['ArrDelay', 'IsArrDelayed', 'DepDelay', 'IsDepDelayed', 'delay_count']].head()
+
