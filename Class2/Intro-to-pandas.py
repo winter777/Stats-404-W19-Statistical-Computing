@@ -456,7 +456,8 @@ df_delays.pivot_table(index="DepDelay_bins", columns="DayOfWeek", aggfunc=sum)
 
 
 # What paths did the carrier fly out of LA County:
-df_origin_dest_LA = df.loc[df['Origin'].isin(('BUR', 'LAX', 'LGB')), ['Origin', 'Dest']]
+df_origin_dest_LA = df.loc[df['Origin'].isin(('BUR', 'LAX', 'LGB')),
+                           ['Origin', 'Dest']]
 df_origin_dest_LA = df_origin_dest_LA.assign(n=1)
 df_origin_dest_LA.groupby(['Origin', 'Dest']).sum()
 
@@ -472,7 +473,8 @@ df.groupby(['UniqueCarrier', 'DayOfWeek'])['ArrDelay'].mean()
 
 
 # If there is a delay, what's the average delay:
-df.loc[df['ArrDelay'] >= 0].groupby(['UniqueCarrier', 'DayOfWeek'])['ArrDelay'].mean()
+df.loc[df['ArrDelay'] >= 0].groupby(
+    ['UniqueCarrier', 'DayOfWeek'])['ArrDelay'].mean()
 
 
 # In[224]:
@@ -490,6 +492,7 @@ def largest_delay(variables):
     else:
         return 'arival-and-departure'
     
-df[['Origin', 'ArrDelay', 'DepDelay']].groupby('Origin').apply(lambda x: largest_delay(x))
+df[['Origin', 'ArrDelay', 'DepDelay']].groupby('Origin').apply(
+    lambda x: largest_delay(x))
 # SAN = San Diego
 
