@@ -526,6 +526,8 @@ pysqldf("""SELECT Origin, Dest, count(*)
            GROUP BY Origin, Dest;""")
 
 
+# Now you can run SQL queries against your `pandas` dataset.
+
 # ### Reading-in Data from Database
 # 
 # Other ways to create `pandas` data frames, from:
@@ -558,6 +560,8 @@ df = pd.read_sql_query("""SELECT *
 df
 
 
+# Now you can execute SQL queries against your database and send results to a `pandas` dataframe.
+# 
 # **TIP** To determine when to:
 # - execute in database and pull-in results into `pandas` dataframe OR 
 # - read into `pandas` datafrmae and then execute SQL commands
