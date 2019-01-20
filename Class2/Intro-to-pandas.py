@@ -507,7 +507,7 @@ df[['Origin', 'ArrDelay', 'DepDelay']].groupby('Origin').apply(
 
 # ### `pandasql`
 # - [`pandasql`](https://pypi.org/project/pandasql/) gives you ability to run `SQL` queries on your `pandas` data set
-# - Similar to `sqldf` package in `R`
+# - Similar to [`sqldf`](https://cran.r-project.org/web/packages/sqldf/sqldf.pdf) package in `R`
 # - Uses `SQLite` syntax [reference](https://pypi.org/project/pandasql/)
 
 # In[319]:
@@ -525,6 +525,8 @@ pysqldf("""SELECT Origin, Dest, count(*)
            FROM df_origin_dest_LA
            GROUP BY Origin, Dest;""")
 
+
+# Now you can run SQL queries against your `pandas` dataset.
 
 # ### Reading-in Data from Database
 # 
@@ -558,6 +560,8 @@ df = pd.read_sql_query("""SELECT *
 df
 
 
+# Now you can execute SQL queries against your database and send results to a `pandas` dataframe.
+# 
 # **TIP** To determine when to:
 # - execute in database and pull-in results into `pandas` dataframe OR 
 # - read into `pandas` datafrmae and then execute SQL commands
