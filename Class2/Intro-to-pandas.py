@@ -396,6 +396,7 @@ inspect.signature(pd.merge)
 
 
 # In[52]:
+# ![Joins that you can do in pandas](./images/pandas-merge-args.png)
 
 
 df_merged = pd.merge(left=df1,
