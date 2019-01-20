@@ -496,3 +496,73 @@ df[['Origin', 'ArrDelay', 'DepDelay']].groupby('Origin').apply(
     lambda x: largest_delay(x))
 # SAN = San Diego
 
+
+# ## Prerequisites for Next Section: SQL
+# 
+# **Please see slide [deck](https://goo.gl/JkLxHq)** for installation instructions of SQLite
+# 
+# ## 10 minute break
+
+# ## pandas and Databases
+
+# ### `pandasql`
+# - [`pandasql`](https://pypi.org/project/pandasql/) gives you ability to run `SQL` queries on your `pandas` data set
+# - Similar to `sqldf` package in `R`
+# - Uses `SQLite` syntax [reference](https://pypi.org/project/pandasql/)
+
+# In[319]:
+
+
+from pandasql import sqldf
+pysqldf = lambda q: sqldf(q, globals())  
+# globals b/c we're using variables defined in global scope, in notebook:
+
+
+# In[320]:
+
+
+pysqldf("""SELECT Origin, Dest, count(*) 
+           FROM df_origin_dest_LA
+           GROUP BY Origin, Dest;""")
+
+
+# ### Reading-in Data from Database
+# 
+# Other ways to create `pandas` data frames, from:
+# - lists and dictionaries: http://pbpython.com/pandas-list-dict.html
+# - JSON (and other file formats), as we saw earlier today
+# - direct pull from database
+# 
+
+# In[321]:
+
+
+import sqlite3
+
+
+# In[322]:
+
+
+# Step 1: Connect to DB, per https://www.dataquest.io/blog/python-pandas-databases/
+conn = sqlite3.connect("chinook.db")
+
+
+# In[323]:
+
+
+# Step 2: Execute query and send results to pandas dataframe:
+df = pd.read_sql_query("""SELECT *
+                          FROM artists
+                          LIMIT 5;""",
+                       conn)
+df
+
+
+# **TIP** To determine when to:
+# - execute in database and pull-in results into `pandas` dataframe OR 
+# - read into `pandas` datafrmae and then execute SQL commands
+# 
+# answer depends... on size of original dataset, (any) constraints on computational time for end-to-end analysis, etc. Please see [here](https://medium.com/carwow-product-engineering/sql-vs-pandas-how-to-balance-tasks-between-server-and-client-side-9e2f6c95677) for a more in-depth discussion.
+
+# # Advanced `pandas`
+# To be covered later in course, when we talk about applications of `pandas` to big data.
