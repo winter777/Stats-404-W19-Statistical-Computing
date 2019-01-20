@@ -302,3 +302,193 @@ df['delay_count'] = df[['IsArrDelayed', 'IsDepDelayed']].apply(
     axis=1)
 df[['ArrDelay', 'IsArrDelayed', 'DepDelay', 'IsDepDelayed', 'delay_count']].head()
 
+
+# ## 10 minute break
+
+# # Intermediate `pandas`: 
+# ## Concatenating, Merging and Joining, Pivoting, Grouping
+# 
+# For more examples on concatenating and merging, please see: [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/merging.html)
+
+# ### Example data sets
+
+# In[51]:
+
+
+df1 = pd.DataFrame({'A': [1, 2],
+                    'B': [3, 4]
+                   }
+                  )
+df1
+
+
+# In[37]:
+
+
+df2 = pd.DataFrame({'A': [1, 2, 1],
+                    'B': [3, 3, 4],
+                    'C': [0, -1, 2]
+                   },
+                   index=[0, 1, 2]
+                  )
+df2
+
+
+# ### Concatenating
+
+# In[47]:
+
+
+# rbind() equivalent:
+df1.append(df2)
+
+
+# In[48]:
+
+
+# Fix warning message using provided recomendations:
+df1.append(df2, sort=False)
+
+
+# In[39]:
+
+
+inspect.signature(df1.append)
+
+
+# In[40]:
+
+
+# Axis=0 for rows and axis=1 for columns:
+pd.concat([df1, df2], axis=1)
+
+
+# In[41]:
+
+
+inspect.signature(pd.concat)
+
+
+# In[49]:
+
+
+# similar to cbind():
+pd.concat([df1, df2], axis=1, join='inner')
+
+
+# ### Merging and Joining
+
+# ![Visualization of Joins](images/joins.png)[[reference]](https://www.dofactory.com/sql/join)
+
+# In[53]:
+
+
+pd.merge(left=df1,
+         right=df2, 
+         how='left',
+         on=['A', 'B'])
+
+
+# In[44]:
+
+
+inspect.signature(pd.merge)
+
+
+# In[52]:
+
+
+df_merged = pd.merge(left=df1,
+                     right=df2, 
+                     how='outer',
+                     on=['A', 'B'],
+                     indicator='indicator_column')
+df_merged
+
+
+# **TIPs**: 
+# - Write out tables that you're going to be combining, columns of interest (to keep in final table), and column(s) that they share. It will be easier to define the merge/SQL/etc. statements.
+# 
+# - Usually `merge` is the answer (over `append` or `concat`), and it's easier to follow, as you're explicitly stating what you're doing.
+
+# ### Pivoting
+# EX: Get counts of flight delay durations (categorical) by day of week.
+
+# What should be our first step in creating a categorical variable for departure delays?
+
+# In[72]:
+
+
+# Step 1: Explore distribution of flight departure delays for all days of week:
+df['DepDelay'].hist(bins=50)
+
+
+# In[153]:
+
+
+# Step 2: Create buckets of departure delays and check distribution:
+df['DepDelay_bins'] = pd.cut(df['DepDelay'], bins=[-15, -1, 0, 15, 30, 45, 60, 90, 3000])
+df['DepDelay_bins'].value_counts(sort=False)
+
+
+# In[154]:
+
+
+# Step 3: Add a count of observations 'n':
+df_delays = df[['DayOfWeek', 'DepDelay_bins']]
+df_delays = df_delays.assign(n=1)
+df_delays.head()
+
+
+# In[155]:
+
+
+# Step 4: Get counts of flight delays by DOW and duration of delay:
+df_delays.pivot_table(index="DepDelay_bins", columns="DayOfWeek", aggfunc=sum)
+
+
+# ### Grouping
+
+# ![Split-apply-combine strategy of grouping](./images/split-apply-combine.png) [reference](https://jakevdp.github.io/blog/2017/03/22/group-by-from-scratch/)
+
+# In[191]:
+
+
+# What paths did the carrier fly out of LA County:
+df_origin_dest_LA = df.loc[df['Origin'].isin(('BUR', 'LAX', 'LGB')), ['Origin', 'Dest']]
+df_origin_dest_LA = df_origin_dest_LA.assign(n=1)
+df_origin_dest_LA.groupby(['Origin', 'Dest']).sum()
+
+
+# In[161]:
+
+
+# What's the average delay:
+df.groupby(['UniqueCarrier', 'DayOfWeek'])['ArrDelay'].mean()
+
+
+# In[160]:
+
+
+# If there is a delay, what's the average delay:
+df.loc[df['ArrDelay'] >= 0].groupby(['UniqueCarrier', 'DayOfWeek'])['ArrDelay'].mean()
+
+
+# In[224]:
+
+
+# Largest delay type by flightpath origin:
+
+def largest_delay(variables):
+    max_arrival_delay = max(variables.ArrDelay)
+    max_departure_delay = max(variables.DepDelay)
+    if math.fabs(max_arrival_delay) > max_departure_delay:
+        return 'arrival'
+    elif math.fabs(max_arrival_delay) < max_departure_delay:
+        return 'departure'
+    else:
+        return 'arival-and-departure'
+    
+df[['Origin', 'ArrDelay', 'DepDelay']].groupby('Origin').apply(lambda x: largest_delay(x))
+# SAN = San Diego
+
