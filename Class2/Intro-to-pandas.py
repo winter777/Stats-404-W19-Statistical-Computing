@@ -507,7 +507,7 @@ df[['Origin', 'ArrDelay', 'DepDelay']].groupby('Origin').apply(
 
 # ### `pandasql`
 # - [`pandasql`](https://pypi.org/project/pandasql/) gives you ability to run `SQL` queries on your `pandas` data set
-# - Similar to `sqldf` package in `R`
+# - Similar to [`sqldf`](https://cran.r-project.org/web/packages/sqldf/sqldf.pdf) package in `R`
 # - Uses `SQLite` syntax [reference](https://pypi.org/project/pandasql/)
 
 # In[319]:
