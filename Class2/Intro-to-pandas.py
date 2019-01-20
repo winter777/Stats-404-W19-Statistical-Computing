@@ -305,7 +305,7 @@ df[['ArrDelay', 'IsArrDelayed', 'DepDelay', 'IsDepDelayed', 'delay_count']].head
 
 # ## 10 minute break
 
-# # Intermediate `pandas`: 
+# # Intermediate `pandas`
 # ## Concatenating, Merging and Joining, Pivoting, Grouping
 # 
 # For more examples on concatenating and merging, please see: [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/merging.html)
