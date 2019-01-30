@@ -105,7 +105,17 @@ Counter(df['UniqueCarrier'])
 # Similar to function introduced in Class 2:
 
 def delays_requiring_compensation(arrival_delay, departure_delay):
-    """Fcn to return if arrival and/or departure delay resulted in passenger compensation."""
+    """Fcn to return if arrival and/or departure delay resulted in passenger
+       compensation.
+       
+       Arguments:
+           - arrival_delay:   delay in minutes
+           - departure_delay: delay in minutes
+       
+       Returns:
+           - number of delays (arrival and or departure) that were delayed
+             so long that passenger got compensated
+    """
     count = 0
     if (arrival_delay/60.0 >= 3) | (departure_delay/60.0 >= 2):
         # If arrival delay is 3+ hours, or if departure delay is 2+ hours:
