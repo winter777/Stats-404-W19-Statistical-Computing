@@ -16,6 +16,7 @@ import pandas as pd
 import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, roc_auc_score, f1_score
 
 
 # In[48]:
@@ -421,9 +422,117 @@ coef_df.T
 # ## Step 8: Evaluate Performance
 
 # In[ ]:
+# ### Step 8a: Evaluate Performance on In-Sample Data
+# Evaluate performance on in-sample data, to see wat the "best-possible" performance is, on data that the model's seen.
+# 
+# Aside: list available metrics available in `sklearn` [here](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics).
 
 
 
+y_pred_train = est_model.predict(X)
+y_pred_train[0:5]
+
+
+
+
+y_pred_train_probs = pd.DataFrame(est_model.predict_proba(X))
+y_pred_train_probs.head()
+
+
+# #### Evaluate Performance via Confusion Matrix
+
+
+
+inspect.signature(confusion_matrix)
+
+
+
+
+confusion_matrix(y_true=y,
+                 y_pred=y_pred_train)
+
+
+# What does this confusion matrix tell us about our model?
+
+# #### Evaluating Performance with AUC ROC
+
+
+
+inspect.signature(roc_auc_score)
+
+
+
+
+# Per documentation
+# https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score
+# y_score can contain "probability estimates of the positive class":
+roc_auc_score(y_true=y,
+              y_score=y_pred_train_probs.iloc[:, 1])
+
+
+# #### Evaluating Performance via F1
+
+
+
+f1_score(y_true=y,
+         y_pred=y_pred_train)
+
+
+# Is our F1-score surprising?
+# 
+
+# ![F1-score](./images/f1-score.png)[reference](https://stackoverflow.com/questions/35365007/tensorflow-precision-recall-f1-score-and-confusion-matrix)
+
+# Is our F1-score surprising?
+
+# What do we think about the model?
+
+# Should we evaluate out-of-sample performance?
+
+# ### Step 8b: Evaluate Performance on Out-of-Sample Data
+
+
+
+y_valid = df_valid['compensated_delays']
+X_valid = df_valid.drop(columns=['compensated_delays'])
+
+
+
+
+y_pred_valid = est_model.predict(X_valid)
+y_pred_valid[0:5]
+
+
+
+
+y_pred_valid_probs = pd.DataFrame(est_model.predict_proba(X_valid))
+y_pred_valid_probs.head()
+
+
+# Do you think we'll do better or worse or same?
+
+# #### Evaluate Performance via Confusion Matrix
+
+
+
+confusion_matrix(y_true=y_valid,
+                 y_pred=y_pred_valid)
+
+
+# #### Evaluating Performance with AUC ROC
+
+
+
+roc_auc_score(y_true=y_valid,
+              y_score=y_pred_valid_probs.iloc[:, 1])
+
+
+# #### Evaluating Performance via F1
+
+
+
+f1_score(y_true=y_valid,
+         y_pred=y_pred_valid)
 
 
 # ## Step 9: Determine Next Steps
