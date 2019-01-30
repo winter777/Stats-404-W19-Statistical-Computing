@@ -341,9 +341,11 @@ dump(est_model, 'logistic.joblib')
 # est_model = load('logistic.joblib') 
 
 
+# Remarks:
 # - Aside: creating a filename that includes a [timestamp](https://stackoverflow.com/questions/10607688/how-to-create-a-file-name-with-the-current-date-time-in-python)
+# - Aside: If interested in seeing more `R`-like output for Logistic Regression, use library `statsmodels`
 # - Logistic Regression with [Cross-Validation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html)
-# - (in general) Cross-Validation with sklearn: [approach 1](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) and [approach 2](https://scikit-learn.org/0.16/modules/generated/sklearn.grid_search.GridSearchCV.html)
+# - (In general) Cross-Validation with sklearn: [approach 1](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) and [approach 2](https://scikit-learn.org/0.16/modules/generated/sklearn.grid_search.GridSearchCV.html)
 
 # ## Step 7: Interpret Results
 
