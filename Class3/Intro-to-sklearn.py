@@ -172,7 +172,7 @@ str(int(min(df['DepTime']))).zfill(4)
 # In[27]:
 
 
-# There are missing departure times:
+# Before processing all of the values, assign missing values to their own category:
 df['DepTime'] = df['DepTime'].fillna(9999.0)
 
 
