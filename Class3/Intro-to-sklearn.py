@@ -138,6 +138,8 @@ df[['ArrDelay', 'DepDelay', 'compensated_delays']].head()
 Counter(df['compensated_delays'])
 
 
+# Let's stop and think about this number... What are client implications?
+
 # ### Step 5-b: Create a Time-of-Day Variable
 # - Per [documentation](http://stat-computing.org/dataexpo/2009/the-data.html) and EDA, time of day is recorded in minutes (float).
 
@@ -172,6 +174,7 @@ df['Dep_Hour'] = df['DepTime'].apply(lambda x:
 
 
 # In[56]:
+# What would be a good comment to the code above?
 
 
 df['Dep_Hour'].value_counts(sort=False)
@@ -250,7 +253,7 @@ dataset.shape
 
 
 # ## Step 4: Determine Data Splits
-# - What are some data splits that you would propose?
+# What are some data splits that you would propose?
 
 # In[77]:
 
