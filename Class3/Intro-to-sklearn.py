@@ -347,18 +347,54 @@ dump(est_model, 'logistic.joblib')
 # ## Step 7: Interpret Results
 
 # In[100]:
+# DataFrame of feature coefficients:
+coefficients = [round(x, 2) for x in est_model.coef_.tolist()[0]]
+coef_df = pd.concat([pd.DataFrame(X.columns),
+                     pd.DataFrame(coefficients)],
+                    axis = 1)
+coef_df.columns = ["feature_name", "coef_est"]
+
+# DataFrame of intercept coefficient:
+intercept_df = pd.DataFrame(["intercept", est_model.intercept_.tolist()[0]]).T
+intercept_df.columns = ["feature_name", "coef_est"]
+
+# Combined DataFrame:
+coef_df = coef_df.append(intercept_df)
+coef_df.head()
 
 
-est_model.intercept_
 
 
 # In[ ]:
+# Compute odds:
+coef_df["odds"] = [round(np.exp(x), 2) for x in coef_df['coef_est']]
 
 
-# [round(x, 2) for x in est_model.coef_.tolist()[0]]
 
 
 # In[ ]:
+# Compute probabilities, which need intercept:
+intercept = intercept_df['coef_est'].values.tolist()[0]
+intercept
+
+
+def inverse_logit(intercept, coefficient):
+    """Fcn to help calculate probability associated with flight delay,
+       given our variable.
+    """
+    if coefficient == intercept:
+        # Make sure we don't double-count the intercept:
+        coefficient = 0
+    inv_logit = np.exp(intercept + coefficient)/(1+np.exp(intercept + coefficient))
+    return round(inv_logit, 2)
+                           
+coef_df["prob_delay"] = [inverse_logit(intercept, x) for x in coef_df['coef_est']]
+
+
+
+coef_df.T
+
+
 
 
 
