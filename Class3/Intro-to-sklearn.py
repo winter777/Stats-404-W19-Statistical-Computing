@@ -146,7 +146,7 @@ Counter(df['compensated_delays'])
 # Let's stop and think about this number... What are client implications?
 
 # ### Step 5-b: Create a Time-of-Day Variable
-# - Per [documentation](http://stat-computing.org/dataexpo/2009/the-data.html) and EDA, time of day is recorded in minutes (float).
+# Per [documentation](http://stat-computing.org/dataexpo/2009/the-data.html) and EDA, time of day is recorded in hhmm.
 
 # In[25]:
 # Recall:
