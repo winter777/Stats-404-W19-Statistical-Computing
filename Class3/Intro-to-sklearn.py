@@ -27,9 +27,11 @@ pd.options.display.max_rows = 8
 
 
 # ## Step 1: Understand Different Modeling Approaches
-# Please see [https://goo.gl/A7P4vX](https://goo.gl/A7P4vX)
+# - Model development is an art and science -- you may have done these steps differently. 
+# - Please let us know what you would have done!
 
 # ## Step 2: Understand Business Use Case
+# Proposed use case -- there may be (many) others:
 # - Client: Airline
 # - Statement of Problem: Airline has to compensate passangers if flight was delayed by 2+ hours or if flight arrived 3+ hours later.
 # - Question: Are there (any) aspects of delay that could have been prevented?
