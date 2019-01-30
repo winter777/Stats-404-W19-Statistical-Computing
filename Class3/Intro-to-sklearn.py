@@ -98,7 +98,9 @@ Counter(df['UniqueCarrier'])
 
 # ## Step 5: Feature Engineering for Baseline Model (v0)
 
-# - What are potential features we want to include in model?
+# What potential features would we want to include in model?
+
+# What features should we **not consider** for inclusion into model?
 
 # ### Step 5-a: Create an Outcome Variable
 
@@ -147,6 +149,13 @@ Counter(df['compensated_delays'])
 # - Per [documentation](http://stat-computing.org/dataexpo/2009/the-data.html) and EDA, time of day is recorded in minutes (float).
 
 # In[25]:
+# Recall:
+min(df['DepTime']), max(df['DepTime'])
+
+
+# How is departure delay recorded?
+
+# How would you convert this field to a time-of-day?
 
 
 print(df['DepTime'][0])
@@ -243,6 +252,7 @@ features.columns
 
 
 # In[75]:
+# What is our baseline Month, DOW and TOD reference point?
 
 
 dataset = pd.concat([features, df['compensated_delays']],
@@ -401,6 +411,12 @@ coef_df.T
 
 
 # How would you interpret the coefficients?
+
+# Did we have a good reference point for comparison (of coefficients) for Month, DOW and TOD?
+
+# What is a better reference point?
+
+# Can be interpret the meaning of the TOD=-99?
 
 
 
