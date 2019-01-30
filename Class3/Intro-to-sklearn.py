@@ -172,7 +172,7 @@ str(int(min(df['DepTime']))).zfill(4)
 # In[27]:
 
 
-# Before processing all of the values, assign missing values to their own category:
+# Before processing all the values, assign missing values to own category:
 df['DepTime'] = df['DepTime'].fillna(9999.0)
 
 
