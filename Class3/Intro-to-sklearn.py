@@ -315,7 +315,7 @@ est_model = LogisticRegression(penalty="l2",
                                class_weight='balanced',
                                random_state=2019,
                                max_iter=10000,
-                               solver='saga')
+                               solver='lbfgs')
 
 
 # In[104]:
