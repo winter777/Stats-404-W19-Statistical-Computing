@@ -197,8 +197,10 @@ df['Dep_Hour'].value_counts(sort=False)
 # In[57]:
 
 
-index_24 = np.where(df['Dep_Hour'] == 24)
-df['Dep_Hour'].iloc[index_24] = 0
+# Convert TOD for flights that departed at 24 hours to departing at TOD=0 hours:
+row_index = np.where(df['Dep_Hour'] == 24)[0].tolist()
+col_index = np.where(df.columns == 'Dep_Hour')[0].tolist()[0]
+df.iloc[row_index, col_index] = 0
 
 
 # In[58]:
