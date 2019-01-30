@@ -395,10 +395,28 @@ coef_df["prob_delay"] = [inverse_logit(intercept, x) for x in coef_df['coef_est'
 coef_df.T
 
 
+# How would you interpret the coefficients?
 
 
 
+# Duplicated to make it easier for interpretations:
+coef_df.T
 
+
+# **Interpretations:**
+# Relative to midnight flights leaving on Mondays in January (e.g. intercept = baseline),
+# - "Red eye" departures tends to increase odds of compensated delays for passengers
+# - Flights over:
+#   - Spring break or
+#   - in summer or
+#   - winter holidays
+# tend to increase odds of compensated delays for passengers
+# - Friday departures also tend to increase odds of compensated delays for passengers
+
+# **Takeaways/Recommendations to your airline client?**
+# 
+
+# **As a passenger, what's the best time to travel?**
 
 # ## Step 8: Evaluate Performance
 
