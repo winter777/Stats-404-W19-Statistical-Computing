@@ -27,9 +27,11 @@ pd.options.display.max_rows = 8
 
 
 # ## Step 1: Understand Different Modeling Approaches
-# Please see [https://goo.gl/A7P4vX](https://goo.gl/A7P4vX)
+# - Model development is an art and science -- you may have done these steps differently. 
+# - Please let us know what you would have done!
 
 # ## Step 2: Understand Business Use Case
+# Proposed use case -- there may be (many) others:
 # - Client: Airline
 # - Statement of Problem: Airline has to compensate passangers if flight was delayed by 2+ hours or if flight arrived 3+ hours later.
 # - Question: Are there (any) aspects of delay that could have been prevented?
@@ -96,7 +98,9 @@ Counter(df['UniqueCarrier'])
 
 # ## Step 5: Feature Engineering for Baseline Model (v0)
 
-# - What are potential features we want to include in model?
+# What potential features would we want to include in model?
+
+# What features should we **not consider** for inclusion into model?
 
 # ### Step 5-a: Create an Outcome Variable
 
@@ -142,9 +146,16 @@ Counter(df['compensated_delays'])
 # Let's stop and think about this number... What are client implications?
 
 # ### Step 5-b: Create a Time-of-Day Variable
-# - Per [documentation](http://stat-computing.org/dataexpo/2009/the-data.html) and EDA, time of day is recorded in minutes (float).
+# Per [documentation](http://stat-computing.org/dataexpo/2009/the-data.html) and EDA, time of day is recorded in hhmm.
 
 # In[25]:
+# Recall:
+min(df['DepTime']), max(df['DepTime'])
+
+
+# How is departure delay recorded?
+
+# How would you convert this field to a time-of-day?
 
 
 print(df['DepTime'][0])
@@ -161,7 +172,7 @@ str(int(min(df['DepTime']))).zfill(4)
 # In[27]:
 
 
-# There are missing departure times:
+# Before processing all the values, assign missing values to own category:
 df['DepTime'] = df['DepTime'].fillna(9999.0)
 
 
@@ -186,8 +197,10 @@ df['Dep_Hour'].value_counts(sort=False)
 # In[57]:
 
 
-index_24 = np.where(df['Dep_Hour'] == 24)
-df['Dep_Hour'].iloc[index_24] = 0
+# Convert TOD for flights that departed at 24 hours to departing at TOD=0 hours:
+row_index = np.where(df['Dep_Hour'] == 24)[0].tolist()
+col_index = np.where(df.columns == 'Dep_Hour')[0].tolist()[0]
+df.iloc[row_index, col_index] = 0
 
 
 # In[58]:
@@ -241,6 +254,7 @@ features.columns
 
 
 # In[75]:
+# What is our baseline Month, DOW and TOD reference point?
 
 
 dataset = pd.concat([features, df['compensated_delays']],
@@ -399,6 +413,12 @@ coef_df.T
 
 
 # How would you interpret the coefficients?
+
+# Did we have a good reference point for comparison (of coefficients) for Month, DOW and TOD?
+
+# What is a better reference point?
+
+# Can be interpret the meaning of the TOD=-99?
 
 
 
