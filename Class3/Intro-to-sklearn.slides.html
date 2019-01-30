@@ -13252,17 +13252,18 @@ a.anchor-link {
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
-<span class="kn">from</span> <span class="nn">joblib</span> <span class="k">import</span> <span class="n">dump</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="k">import</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">sklearn</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">f1_score</span>
 </pre></div>
 
     </div>
@@ -13272,7 +13273,7 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">50</span>
@@ -13345,7 +13346,7 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;https://s3.amazonaws.com/h2o-airlines-unpacked/year2012.csv&quot;</span>
@@ -13368,7 +13369,7 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
@@ -13384,7 +13385,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -13401,7 +13402,7 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">])</span>
@@ -13417,7 +13418,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13445,7 +13446,7 @@ a.anchor-link {
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13461,7 +13462,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13701,43 +13702,10 @@ a.anchor-link {
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DepTime&#39;</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DepTime&#39;</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1.0, 2400.0)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ArrTime&#39;</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ArrTime&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DepTime&#39;</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DepTime&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -13764,10 +13732,43 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ArrTime&#39;</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ArrTime&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1.0, 2400.0)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;UniqueCarrier&#39;</span><span class="p">])</span>
@@ -13783,7 +13784,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[46]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13845,13 +13846,23 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Similar to function introduced in Class 2:</span>
 
 <span class="k">def</span> <span class="nf">delays_requiring_compensation</span><span class="p">(</span><span class="n">arrival_delay</span><span class="p">,</span> <span class="n">departure_delay</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fcn to return if arrival and/or departure delay resulted in passenger compensation.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Fcn to return if arrival and/or departure delay resulted in passenger</span>
+<span class="sd">       compensation.</span>
+<span class="sd">       </span>
+<span class="sd">       Arguments:</span>
+<span class="sd">           - arrival_delay:   delay in minutes</span>
+<span class="sd">           - departure_delay: delay in minutes</span>
+<span class="sd">       </span>
+<span class="sd">       Returns:</span>
+<span class="sd">           - number of delays (arrival and or departure) that were delayed</span>
+<span class="sd">             so long that passenger got compensated</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">arrival_delay</span><span class="o">/</span><span class="mf">60.0</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">departure_delay</span><span class="o">/</span><span class="mf">60.0</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">):</span>
         <span class="c1"># If arrival delay is 3+ hours, or if departure delay is 2+ hours:</span>
@@ -13863,10 +13874,10 @@ a.anchor-link {
 </div>
 </div>
 
-</div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;ArrDelay&#39;</span><span class="p">,</span> <span class="s1">&#39;DepDelay&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
@@ -13885,7 +13896,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[15]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13954,10 +13965,10 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div><div class="fragment">
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">])</span>
@@ -13973,7 +13984,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -13987,6 +13998,14 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's stop and think about this number... What are client implications?</p>
+
+</div>
+</div>
 </div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14000,7 +14019,7 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DepTime&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
@@ -14028,7 +14047,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -14045,7 +14064,7 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DepTime&#39;</span><span class="p">]))</span>
@@ -14073,7 +14092,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -14090,7 +14109,7 @@ a.anchor-link {
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># There are missing departure times:</span>
@@ -14104,7 +14123,7 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dep_Hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DepTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span>
@@ -14117,10 +14136,18 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What would be a good comment to the code above?</p>
+
+</div>
+</div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dep_Hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -14136,7 +14163,7 @@ a.anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[56]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -14170,7 +14197,7 @@ Name: Dep_Hour, Length: 26, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">index_24</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dep_Hour&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">24</span><span class="p">)</span>
@@ -14184,7 +14211,7 @@ Name: Dep_Hour, Length: 26, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dep_Hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -14200,7 +14227,7 @@ Name: Dep_Hour, Length: 26, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[58]:</div>
+    <div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -14239,7 +14266,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features_tod</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Dep_Hour&#39;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;tod_&quot;</span><span class="p">)</span>
@@ -14252,7 +14279,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features_tod</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14268,7 +14295,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[66]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -14466,7 +14493,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features_month</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;mo_&quot;</span><span class="p">)</span>
@@ -14479,7 +14506,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features_dow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DayOfWeek&#39;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;dow_&quot;</span><span class="p">)</span>
@@ -14492,7 +14519,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">features_tod</span><span class="p">,</span> <span class="n">features_month</span><span class="p">,</span> <span class="n">features_dow</span><span class="p">],</span>
@@ -14507,7 +14534,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features</span><span class="o">.</span><span class="n">columns</span>
@@ -14523,7 +14550,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[70]:</div>
+    <div class="prompt output_prompt">Out[26]:</div>
 
 
 
@@ -14547,7 +14574,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">features</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">]],</span>
@@ -14561,7 +14588,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">shape</span>
@@ -14577,7 +14604,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[76]:</div>
+    <div class="prompt output_prompt">Out[28]:</div>
 
 
 
@@ -14595,16 +14622,14 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-4:-Determine-Data-Splits">Step 4: Determine Data Splits<a class="anchor-link" href="#Step-4:-Determine-Data-Splits">&#182;</a></h2><ul>
-<li>What are some data splits that you would propose?</li>
-</ul>
+<h2 id="Step-4:-Determine-Data-Splits">Step 4: Determine Data Splits<a class="anchor-link" href="#Step-4:-Determine-Data-Splits">&#182;</a></h2><p>What are some data splits that you would propose?</p>
 
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_tmp</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span>
@@ -14620,7 +14645,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df_tmp</span><span class="p">,</span>
@@ -14636,7 +14661,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -14652,7 +14677,7 @@ Name: Dep_Hour, Length: 25, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[79]:</div>
+    <div class="prompt output_prompt">Out[31]:</div>
 
 
 
@@ -14671,7 +14696,7 @@ Name: compensated_delays, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_valid</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -14687,7 +14712,7 @@ Name: compensated_delays, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[80]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -14706,7 +14731,7 @@ Name: compensated_delays, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -14722,7 +14747,7 @@ Name: compensated_delays, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[81]:</div>
+    <div class="prompt output_prompt">Out[33]:</div>
 
 
 
@@ -14748,7 +14773,7 @@ Name: compensated_delays, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">]</span>
@@ -14762,10 +14787,932 @@ Name: compensated_delays, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[35]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;Signature (penalty=&#39;l2&#39;, dual=False, tol=0.0001, C=1.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None, solver=&#39;warn&#39;, max_iter=100, multi_class=&#39;warn&#39;, verbose=0, warm_start=False, n_jobs=None)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">est_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
+                               <span class="n">C</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                               <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                               <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span>
+                               <span class="n">random_state</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span>
+                               <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+                               <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">est_model</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[37]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>LogisticRegression(C=0.5, class_weight=&#39;balanced&#39;, dual=False,
+          fit_intercept=True, intercept_scaling=1, max_iter=10000,
+          multi_class=&#39;warn&#39;, n_jobs=None, penalty=&#39;l2&#39;, random_state=2019,
+          solver=&#39;lbfgs&#39;, tol=0.0001, verbose=0, warm_start=False)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">est_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save model, per: https://scikit-learn.org/stable/modules/model_persistence.html</span>
+<span class="n">dump</span><span class="p">(</span><span class="n">est_model</span><span class="p">,</span> <span class="s1">&#39;logistic.joblib&#39;</span><span class="p">)</span>
+
+<span class="c1">## Load saved model:</span>
+<span class="c1"># est_model = load(&#39;logistic.joblib&#39;) </span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Remarks:</p>
+<ul>
+<li>Aside: creating a filename that includes a <a href="https://stackoverflow.com/questions/10607688/how-to-create-a-file-name-with-the-current-date-time-in-python">timestamp</a></li>
+<li>Aside: If interested in seeing more <code>R</code>-like output for Logistic Regression, use library <code>statsmodels</code></li>
+<li>Logistic Regression with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html">Cross-Validation</a></li>
+<li>(In general) Cross-Validation with sklearn: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">approach 1</a> and <a href="https://scikit-learn.org/0.16/modules/generated/sklearn.grid_search.GridSearchCV.html">approach 2</a></li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step-7:-Interpret-Results">Step 7: Interpret Results<a class="anchor-link" href="#Step-7:-Interpret-Results">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># DataFrame of feature coefficients:</span>
+<span class="n">coefficients</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">est_model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">coef_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span>
+                     <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)],</span>
+                    <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">coef_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;feature_name&quot;</span><span class="p">,</span> <span class="s2">&quot;coef_est&quot;</span><span class="p">]</span>
+
+<span class="c1"># DataFrame of intercept coefficient:</span>
+<span class="n">intercept_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="s2">&quot;intercept&quot;</span><span class="p">,</span> <span class="n">est_model</span><span class="o">.</span><span class="n">intercept_</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">intercept_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;feature_name&quot;</span><span class="p">,</span> <span class="s2">&quot;coef_est&quot;</span><span class="p">]</span>
+
+<span class="c1"># Combined DataFrame:</span>
+<span class="n">coef_df</span> <span class="o">=</span> <span class="n">coef_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">intercept_df</span><span class="p">)</span>
+<span class="n">coef_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[68]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature_name</th>
+      <th>coef_est</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>tod__1</td>
+      <td>0.12</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>tod__2</td>
+      <td>0.22</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>tod__3</td>
+      <td>-0.09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>tod__4</td>
+      <td>-3.26</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>tod__5</td>
+      <td>-6.82</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute odds:</span>
+<span class="n">coef_df</span><span class="p">[</span><span class="s2">&quot;odds&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">coef_df</span><span class="p">[</span><span class="s1">&#39;coef_est&#39;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute probabilities, which need intercept:</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">intercept_df</span><span class="p">[</span><span class="s1">&#39;coef_est&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">intercept</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[98]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2.730757870586944</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inverse_logit</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">coefficient</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fcn to help calculate probability associated with flight delay,</span>
+<span class="sd">       given our variable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">coefficient</span> <span class="o">==</span> <span class="n">intercept</span><span class="p">:</span>
+        <span class="c1"># Make sure we don&#39;t double-count the intercept:</span>
+        <span class="n">coefficient</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">inv_logit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">coefficient</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">coefficient</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">inv_logit</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                           
+<span class="n">coef_df</span><span class="p">[</span><span class="s2">&quot;prob_delay&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">inverse_logit</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">coef_df</span><span class="p">[</span><span class="s1">&#39;coef_est&#39;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">coef_df</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[82]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+      <th>34</th>
+      <th>35</th>
+      <th>36</th>
+      <th>37</th>
+      <th>38</th>
+      <th>39</th>
+      <th>40</th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>feature_name</th>
+      <td>tod__1</td>
+      <td>tod__2</td>
+      <td>tod__3</td>
+      <td>tod__4</td>
+      <td>tod__5</td>
+      <td>tod__6</td>
+      <td>tod__7</td>
+      <td>tod__8</td>
+      <td>tod__9</td>
+      <td>tod__10</td>
+      <td>tod__11</td>
+      <td>tod__12</td>
+      <td>tod__13</td>
+      <td>tod__14</td>
+      <td>tod__15</td>
+      <td>tod__16</td>
+      <td>tod__17</td>
+      <td>tod__18</td>
+      <td>tod__19</td>
+      <td>tod__20</td>
+      <td>tod__21</td>
+      <td>tod__22</td>
+      <td>tod__23</td>
+      <td>tod__99</td>
+      <td>mo__2</td>
+      <td>mo__3</td>
+      <td>mo__4</td>
+      <td>mo__5</td>
+      <td>mo__6</td>
+      <td>mo__7</td>
+      <td>mo__8</td>
+      <td>mo__9</td>
+      <td>mo__10</td>
+      <td>mo__11</td>
+      <td>mo__12</td>
+      <td>dow__2</td>
+      <td>dow__3</td>
+      <td>dow__4</td>
+      <td>dow__5</td>
+      <td>dow__6</td>
+      <td>dow__7</td>
+      <td>intercept</td>
+    </tr>
+    <tr>
+      <th>coef_est</th>
+      <td>0.12</td>
+      <td>0.22</td>
+      <td>-0.09</td>
+      <td>-3.26</td>
+      <td>-6.82</td>
+      <td>-6.71</td>
+      <td>-5.71</td>
+      <td>-4.26</td>
+      <td>-3.65</td>
+      <td>-3.38</td>
+      <td>-3.27</td>
+      <td>-3.09</td>
+      <td>-3</td>
+      <td>-2.97</td>
+      <td>-2.76</td>
+      <td>-2.71</td>
+      <td>-2.69</td>
+      <td>-2.47</td>
+      <td>-2.34</td>
+      <td>-1.96</td>
+      <td>-1.71</td>
+      <td>-1.28</td>
+      <td>-0.51</td>
+      <td>-9.74</td>
+      <td>-0.3</td>
+      <td>0.11</td>
+      <td>-0.29</td>
+      <td>0.03</td>
+      <td>0.23</td>
+      <td>0.59</td>
+      <td>0.36</td>
+      <td>-0.02</td>
+      <td>0.03</td>
+      <td>0</td>
+      <td>0.4</td>
+      <td>-0.26</td>
+      <td>-0.15</td>
+      <td>-0.05</td>
+      <td>0.06</td>
+      <td>-0.19</td>
+      <td>-0.17</td>
+      <td>2.73076</td>
+    </tr>
+    <tr>
+      <th>odds</th>
+      <td>1.13</td>
+      <td>1.25</td>
+      <td>0.91</td>
+      <td>0.04</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>0.1</td>
+      <td>0.14</td>
+      <td>0.18</td>
+      <td>0.28</td>
+      <td>0.6</td>
+      <td>0</td>
+      <td>0.74</td>
+      <td>1.12</td>
+      <td>0.75</td>
+      <td>1.03</td>
+      <td>1.26</td>
+      <td>1.8</td>
+      <td>1.43</td>
+      <td>0.98</td>
+      <td>1.03</td>
+      <td>1</td>
+      <td>1.49</td>
+      <td>0.77</td>
+      <td>0.86</td>
+      <td>0.95</td>
+      <td>1.06</td>
+      <td>0.83</td>
+      <td>0.84</td>
+      <td>15.34</td>
+    </tr>
+    <tr>
+      <th>prob_delay</th>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.93</td>
+      <td>0.37</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>0.18</td>
+      <td>0.29</td>
+      <td>0.34</td>
+      <td>0.37</td>
+      <td>0.41</td>
+      <td>0.43</td>
+      <td>0.44</td>
+      <td>0.49</td>
+      <td>0.51</td>
+      <td>0.51</td>
+      <td>0.56</td>
+      <td>0.6</td>
+      <td>0.68</td>
+      <td>0.74</td>
+      <td>0.81</td>
+      <td>0.9</td>
+      <td>0</td>
+      <td>0.92</td>
+      <td>0.94</td>
+      <td>0.92</td>
+      <td>0.94</td>
+      <td>0.95</td>
+      <td>0.97</td>
+      <td>0.96</td>
+      <td>0.94</td>
+      <td>0.94</td>
+      <td>0.94</td>
+      <td>0.96</td>
+      <td>0.92</td>
+      <td>0.93</td>
+      <td>0.94</td>
+      <td>0.94</td>
+      <td>0.93</td>
+      <td>0.93</td>
+      <td>0.94</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How would you interpret the coefficients?</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Duplicated to make it easier for interpretations:</span>
+<span class="n">coef_df</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[83]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+      <th>34</th>
+      <th>35</th>
+      <th>36</th>
+      <th>37</th>
+      <th>38</th>
+      <th>39</th>
+      <th>40</th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>feature_name</th>
+      <td>tod__1</td>
+      <td>tod__2</td>
+      <td>tod__3</td>
+      <td>tod__4</td>
+      <td>tod__5</td>
+      <td>tod__6</td>
+      <td>tod__7</td>
+      <td>tod__8</td>
+      <td>tod__9</td>
+      <td>tod__10</td>
+      <td>tod__11</td>
+      <td>tod__12</td>
+      <td>tod__13</td>
+      <td>tod__14</td>
+      <td>tod__15</td>
+      <td>tod__16</td>
+      <td>tod__17</td>
+      <td>tod__18</td>
+      <td>tod__19</td>
+      <td>tod__20</td>
+      <td>tod__21</td>
+      <td>tod__22</td>
+      <td>tod__23</td>
+      <td>tod__99</td>
+      <td>mo__2</td>
+      <td>mo__3</td>
+      <td>mo__4</td>
+      <td>mo__5</td>
+      <td>mo__6</td>
+      <td>mo__7</td>
+      <td>mo__8</td>
+      <td>mo__9</td>
+      <td>mo__10</td>
+      <td>mo__11</td>
+      <td>mo__12</td>
+      <td>dow__2</td>
+      <td>dow__3</td>
+      <td>dow__4</td>
+      <td>dow__5</td>
+      <td>dow__6</td>
+      <td>dow__7</td>
+      <td>intercept</td>
+    </tr>
+    <tr>
+      <th>coef_est</th>
+      <td>0.12</td>
+      <td>0.22</td>
+      <td>-0.09</td>
+      <td>-3.26</td>
+      <td>-6.82</td>
+      <td>-6.71</td>
+      <td>-5.71</td>
+      <td>-4.26</td>
+      <td>-3.65</td>
+      <td>-3.38</td>
+      <td>-3.27</td>
+      <td>-3.09</td>
+      <td>-3</td>
+      <td>-2.97</td>
+      <td>-2.76</td>
+      <td>-2.71</td>
+      <td>-2.69</td>
+      <td>-2.47</td>
+      <td>-2.34</td>
+      <td>-1.96</td>
+      <td>-1.71</td>
+      <td>-1.28</td>
+      <td>-0.51</td>
+      <td>-9.74</td>
+      <td>-0.3</td>
+      <td>0.11</td>
+      <td>-0.29</td>
+      <td>0.03</td>
+      <td>0.23</td>
+      <td>0.59</td>
+      <td>0.36</td>
+      <td>-0.02</td>
+      <td>0.03</td>
+      <td>0</td>
+      <td>0.4</td>
+      <td>-0.26</td>
+      <td>-0.15</td>
+      <td>-0.05</td>
+      <td>0.06</td>
+      <td>-0.19</td>
+      <td>-0.17</td>
+      <td>2.73076</td>
+    </tr>
+    <tr>
+      <th>odds</th>
+      <td>1.13</td>
+      <td>1.25</td>
+      <td>0.91</td>
+      <td>0.04</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>0.1</td>
+      <td>0.14</td>
+      <td>0.18</td>
+      <td>0.28</td>
+      <td>0.6</td>
+      <td>0</td>
+      <td>0.74</td>
+      <td>1.12</td>
+      <td>0.75</td>
+      <td>1.03</td>
+      <td>1.26</td>
+      <td>1.8</td>
+      <td>1.43</td>
+      <td>0.98</td>
+      <td>1.03</td>
+      <td>1</td>
+      <td>1.49</td>
+      <td>0.77</td>
+      <td>0.86</td>
+      <td>0.95</td>
+      <td>1.06</td>
+      <td>0.83</td>
+      <td>0.84</td>
+      <td>15.34</td>
+    </tr>
+    <tr>
+      <th>prob_delay</th>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>0.93</td>
+      <td>0.37</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>0.18</td>
+      <td>0.29</td>
+      <td>0.34</td>
+      <td>0.37</td>
+      <td>0.41</td>
+      <td>0.43</td>
+      <td>0.44</td>
+      <td>0.49</td>
+      <td>0.51</td>
+      <td>0.51</td>
+      <td>0.56</td>
+      <td>0.6</td>
+      <td>0.68</td>
+      <td>0.74</td>
+      <td>0.81</td>
+      <td>0.9</td>
+      <td>0</td>
+      <td>0.92</td>
+      <td>0.94</td>
+      <td>0.92</td>
+      <td>0.94</td>
+      <td>0.95</td>
+      <td>0.97</td>
+      <td>0.96</td>
+      <td>0.94</td>
+      <td>0.94</td>
+      <td>0.94</td>
+      <td>0.96</td>
+      <td>0.92</td>
+      <td>0.93</td>
+      <td>0.94</td>
+      <td>0.94</td>
+      <td>0.93</td>
+      <td>0.93</td>
+      <td>0.94</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Interpretations:</strong>
+Relative to midnight flights leaving on Mondays in January (e.g. intercept = baseline),</p>
+<ul>
+<li>"Red eye" departures tends to increase odds of compensated delays for passengers</li>
+<li>Flights over:<ul>
+<li>Spring break or</li>
+<li>in summer or</li>
+<li>winter holidays
+tend to increase odds of compensated delays for passengers</li>
+</ul>
+</li>
+<li>Friday departures also tend to increase odds of compensated delays for passengers</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Takeaways/Recommendations to your airline client?</strong></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>As a passenger, what's the best time to travel?</strong></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step-8:-Evaluate-Performance">Step 8: Evaluate Performance<a class="anchor-link" href="#Step-8:-Evaluate-Performance">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-8a:-Evaluate-Performance-on-In-Sample-Data">Step 8a: Evaluate Performance on In-Sample Data<a class="anchor-link" href="#Step-8a:-Evaluate-Performance-on-In-Sample-Data">&#182;</a></h3><p>Evaluate performance on in-sample data, to see wat the "best-possible" performance is, on data that the model's seen.</p>
+<p>Aside: list available metrics available in <code>sklearn</code> <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">here</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">est_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y_pred_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -14784,7 +15731,7 @@ Name: compensated_delays, dtype: int64</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;Signature (penalty=&#39;l2&#39;, dual=False, tol=0.0001, C=1.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None, solver=&#39;warn&#39;, max_iter=100, multi_class=&#39;warn&#39;, verbose=0, warm_start=False, n_jobs=None)&gt;</pre>
+<pre>array([0, 1, 0, 0, 0])</pre>
 </div>
 
 </div>
@@ -14795,29 +15742,11 @@ Name: compensated_delays, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[103]:</div>
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">est_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
-                               <span class="n">C</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                               <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                               <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span>
-                               <span class="n">random_state</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span>
-                               <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-                               <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[104]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">est_model</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_train_probs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">est_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">y_pred_train_probs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14830,16 +15759,62 @@ Name: compensated_delays, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[104]:</div>
+    <div class="prompt output_prompt">Out[85]:</div>
 
 
 
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="output_text output_subarea output_execute_result">
-<pre>LogisticRegression(C=0.5, class_weight=&#39;balanced&#39;, dual=False,
-          fit_intercept=True, intercept_scaling=1, max_iter=10000,
-          multi_class=&#39;warn&#39;, n_jobs=None, penalty=&#39;l2&#39;, random_state=2019,
-          solver=&#39;saga&#39;, tol=0.0001, verbose=0, warm_start=False)</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.979545</td>
+      <td>0.020455</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.435304</td>
+      <td>0.564696</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.675102</td>
+      <td>0.324898</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.977102</td>
+      <td>0.022898</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.695111</td>
+      <td>0.304889</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -14848,29 +15823,102 @@ Name: compensated_delays, dtype: int64</pre>
 </div>
 
 </div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Evaluate-Performance-via-Confusion-Matrix">Evaluate Performance via Confusion Matrix<a class="anchor-link" href="#Evaluate-Performance-via-Confusion-Matrix">&#182;</a></h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[86]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">est_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[86]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;Signature (y_true, y_pred, labels=None, sample_weight=None)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                 <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_train</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[87]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[2291437, 1080823],
+       [  17863,   39305]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What does this confusion matrix tell us about our model?</p>
+
+</div>
+</div>
 </div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Evaluating-Performance-with-AUC-ROC">Evaluating Performance with AUC ROC<a class="anchor-link" href="#Evaluating-Performance-with-AUC-ROC">&#182;</a></h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[88]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save model, per: https://scikit-learn.org/stable/modules/model_persistence.html</span>
-<span class="n">dump</span><span class="p">(</span><span class="n">est_model</span><span class="p">,</span> <span class="s1">&#39;logistic.joblib&#39;</span><span class="p">)</span>
-
-<span class="c1">## Load saved model:</span>
-<span class="c1"># est_model = load(&#39;logistic.joblib&#39;) </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">roc_auc_score</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14889,7 +15937,7 @@ Name: compensated_delays, dtype: int64</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;logistic.joblib&#39;]</pre>
+<pre>&lt;Signature (y_true, y_score, average=&#39;macro&#39;, sample_weight=None, max_fpr=None)&gt;</pre>
 </div>
 
 </div>
@@ -14897,32 +15945,17 @@ Name: compensated_delays, dtype: int64</pre>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Aside: creating a filename that includes a <a href="https://stackoverflow.com/questions/10607688/how-to-create-a-file-name-with-the-current-date-time-in-python">timestamp</a></li>
-<li>Logistic Regression with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html">Cross-Validation</a></li>
-<li>(in general) Cross-Validation with sklearn: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">approach 1</a> and <a href="https://scikit-learn.org/0.16/modules/generated/sklearn.grid_search.GridSearchCV.html">approach 2</a></li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-7:-Interpret-Results">Step 7: Interpret Results<a class="anchor-link" href="#Step-7:-Interpret-Results">&#182;</a></h2>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="prompt input_prompt">In&nbsp;[89]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">est_model</span><span class="o">.</span><span class="n">intercept_</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Per documentation</span>
+<span class="c1"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score</span>
+<span class="c1"># y_score can contain &quot;probability estimates of the positive class&quot;:</span>
+<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+              <span class="n">y_score</span><span class="o">=</span><span class="n">y_pred_train_probs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -14935,13 +15968,13 @@ Name: compensated_delays, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[100]:</div>
+    <div class="prompt output_prompt">Out[89]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([2.73075787])</pre>
+<pre>0.7651031323687287</pre>
 </div>
 
 </div>
@@ -14949,49 +15982,354 @@ Name: compensated_delays, dtype: int64</pre>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># [round(x, 2) for x in est_model.coef_.tolist()[0]]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-8:-Evaluate-Performance">Step 8: Evaluate Performance<a class="anchor-link" href="#Step-8:-Evaluate-Performance">&#182;</a></h2>
+<h4 id="Evaluating-Performance-via-F1">Evaluating Performance via F1<a class="anchor-link" href="#Evaluating-Performance-via-F1">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[90]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+         <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_train</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[90]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.06677165300824942</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Is our F1-score surprising?</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./images/f1-score.png" alt="F1-score"><a href="https://stackoverflow.com/questions/35365007/tensorflow-precision-recall-f1-score-and-confusion-matrix">reference</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Is our F1-score surprising?</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What do we think about the model?</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Should we evaluate out-of-sample performance?</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-8b:-Evaluate-Performance-on-Out-of-Sample-Data">Step 8b: Evaluate Performance on Out-of-Sample Data<a class="anchor-link" href="#Step-8b:-Evaluate-Performance-on-Out-of-Sample-Data">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_valid</span> <span class="o">=</span> <span class="n">df_valid</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">]</span>
+<span class="n">X_valid</span> <span class="o">=</span> <span class="n">df_valid</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;compensated_delays&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_valid</span> <span class="o">=</span> <span class="n">est_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+<span class="n">y_pred_valid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[92]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0, 0, 1, 0, 1])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[93]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_valid_probs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">est_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_valid</span><span class="p">))</span>
+<span class="n">y_pred_valid_probs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[93]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.675206</td>
+      <td>0.324794</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.821830</td>
+      <td>0.178170</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.441084</td>
+      <td>0.558916</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.686269</td>
+      <td>0.313731</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.392882</td>
+      <td>0.607118</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Do you think we'll do better or worse or same?</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Evaluate-Performance-via-Confusion-Matrix">Evaluate Performance via Confusion Matrix<a class="anchor-link" href="#Evaluate-Performance-via-Confusion-Matrix">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_valid</span><span class="p">,</span>
+                 <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_valid</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[94]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[763758, 360329],
+       [  5981,  13075]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Evaluating-Performance-with-AUC-ROC">Evaluating Performance with AUC ROC<a class="anchor-link" href="#Evaluating-Performance-with-AUC-ROC">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_valid</span><span class="p">,</span>
+              <span class="n">y_score</span><span class="o">=</span><span class="n">y_pred_valid_probs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[95]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.7644348618142321</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Evaluating-Performance-via-F1">Evaluating Performance via F1<a class="anchor-link" href="#Evaluating-Performance-via-F1">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_valid</span><span class="p">,</span>
+         <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred_valid</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[96]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.06663099424145136</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -15000,6 +16338,14 @@ Name: compensated_delays, dtype: int64</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Step-9:-Determine-Next-Steps">Step 9: Determine Next Steps<a class="anchor-link" href="#Step-9:-Determine-Next-Steps">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What should the next model iteration focus on?</p>
+
 </div>
 </div>
 </div></section></section>
