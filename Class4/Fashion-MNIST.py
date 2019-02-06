@@ -622,6 +622,10 @@ net = Network([784, 30, 10])
 res = net.SGD(training_data, learning_rate=3.0)
 
 
+# Accuracy at convergence:
+# ![NN convergence](./images/NN-convergence.png)
+
+# Is convergence monotonic?
 # #### Ad-hoc (Mis)classifications Check
 
 # In[ ]:
@@ -665,6 +669,9 @@ round(conf_df_pct_nn, 2)
 
 
 # In[ ]:
+# Anything jump out as reasonable misclassification?
+
+# Anything jump out as egregious misclassification?
 
 
 # Compare with confusion matrix from RF:
