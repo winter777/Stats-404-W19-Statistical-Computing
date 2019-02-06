@@ -1,6 +1,10 @@
 """
 network.py
 ~~~~~~~~~~
+Author: Michael Nielsen
+Book: http://neuralnetworksanddeeplearning.com/
+Code repository:
+https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py
 
 A module to implement gradient descent learning algorithm for a feedforward
 neural network.  Gradients are calculated using backpropagation.  Note that
@@ -8,7 +12,6 @@ I have focused on making the code simple, easily readable, and easily
 modifiable.  It is not optimized, and omits many desirable features.
 """
 
-#### Libraries
 # Standard library
 import random
 
@@ -86,13 +89,9 @@ class Network(object):
             sigmoid_prime(zs[-1])
         nabla_b[-1] = delta
         nabla_w[-1] = np.dot(delta, activations[-2].transpose())
-        # Note that the variable l in the loop below is used a little
-        # differently to the notation in Chapter 2 of the book.  Here,
-        # l = 1 means the last layer of neurons, l = 2 is the
-        # second-last layer, and so on.  It's a renumbering of the
-        # scheme in the book, used here to take advantage of the fact
-        # that Python can use negative indices in lists.
-        for l in xrange(2, self.num_layers):
+        # Here, l = 1 means the last layer of neurons, l = 2 is second-to-last
+        # layer, etc., to take advantage of Python's use of negative indices:
+        for l in range(2, self.num_layers):
             z = zs[-l]
             sp = sigmoid_prime(z)
             delta = np.dot(self.weights[-l+1].transpose(), delta) * sp
@@ -114,7 +113,8 @@ class Network(object):
         \partial a for the output activations."""
         return (output_activations-y)
 
-#### Miscellaneous functions
+
+# Helper functions not part of Network() class, but are used within class:
 def sigmoid(z):
     """The sigmoid function."""
     return 1.0/(1.0+np.exp(-z))
