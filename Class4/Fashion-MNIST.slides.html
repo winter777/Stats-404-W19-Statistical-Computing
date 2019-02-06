@@ -13887,7 +13887,7 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
@@ -13903,7 +13903,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -13959,7 +13959,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;outcome&#39;</span><span class="p">]</span>
@@ -13973,7 +13973,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
@@ -13989,7 +13989,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -14006,7 +14006,7 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">RandomForestClassifier</span><span class="p">)</span>
@@ -14022,7 +14022,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -14039,7 +14039,7 @@ Name: outcome, dtype: int64</pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### --- Step 1: Specify different number of trees in forest, to determine</span>
@@ -14054,7 +14054,7 @@ Name: outcome, dtype: int64</pre>
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### --- Step 2: Create dictionary to save-off each estimated RF model:</span>
@@ -14068,7 +14068,7 @@ Name: outcome, dtype: int64</pre>
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">n_trees</span><span class="p">:</span>
@@ -14100,7 +14100,7 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### --- Save-off model:</span>
@@ -14120,7 +14120,7 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute OOB error per</span>
@@ -14180,7 +14180,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Feature importance plot, modified from: </span>
@@ -14200,7 +14200,7 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot the feature importances of the forest</span>
@@ -14266,7 +14266,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -14295,7 +14295,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -14312,7 +14312,7 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_train_probs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">forest</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
@@ -14341,7 +14341,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[31]:</div>
 
 
 
@@ -14462,7 +14462,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">conf_mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
@@ -14480,7 +14480,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -14506,7 +14506,7 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To have columns be in correct order:</span>
@@ -14520,7 +14520,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">conf_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conf_mat</span><span class="p">,</span> <span class="n">class_names</span><span class="p">,</span> <span class="n">class_names</span><span class="p">)</span>
@@ -14537,7 +14537,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[34]:</div>
 
 
 
@@ -14716,10 +14716,10 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conf_df_pct</span> <span class="o">=</span> <span class="n">conf_df</span><span class="o">/</span><span class="n">conf_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conf_df_pct</span> <span class="o">=</span> <span class="n">conf_df</span><span class="o">/</span><span class="n">conf_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">round</span><span class="p">(</span><span class="n">conf_df_pct</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
@@ -14733,7 +14733,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[61]:</div>
 
 
 
@@ -14771,13 +14771,13 @@ Name: outcome, dtype: int64</pre>
   <tbody>
     <tr>
       <th>T-shirt/top</th>
-      <td>0.83</td>
+      <td>0.87</td>
       <td>0.00</td>
       <td>0.01</td>
       <td>0.04</td>
       <td>0.01</td>
       <td>0.00</td>
-      <td>0.07</td>
+      <td>0.05</td>
       <td>0.00</td>
       <td>0.01</td>
       <td>0.00</td>
@@ -14785,9 +14785,9 @@ Name: outcome, dtype: int64</pre>
     <tr>
       <th>Trouser</th>
       <td>0.00</td>
-      <td>0.99</td>
+      <td>0.96</td>
       <td>0.01</td>
-      <td>0.02</td>
+      <td>0.03</td>
       <td>0.00</td>
       <td>0.00</td>
       <td>0.00</td>
@@ -14799,11 +14799,11 @@ Name: outcome, dtype: int64</pre>
       <th>Pullover</th>
       <td>0.00</td>
       <td>0.00</td>
-      <td>0.80</td>
+      <td>0.83</td>
       <td>0.01</td>
-      <td>0.10</td>
+      <td>0.11</td>
       <td>0.00</td>
-      <td>0.05</td>
+      <td>0.04</td>
       <td>0.00</td>
       <td>0.01</td>
       <td>0.00</td>
@@ -14813,8 +14813,8 @@ Name: outcome, dtype: int64</pre>
       <td>0.02</td>
       <td>0.00</td>
       <td>0.01</td>
-      <td>0.87</td>
-      <td>0.02</td>
+      <td>0.92</td>
+      <td>0.03</td>
       <td>0.00</td>
       <td>0.02</td>
       <td>0.00</td>
@@ -14825,11 +14825,11 @@ Name: outcome, dtype: int64</pre>
       <th>Coat</th>
       <td>0.00</td>
       <td>0.00</td>
-      <td>0.05</td>
-      <td>0.03</td>
-      <td>0.79</td>
-      <td>0.00</td>
+      <td>0.06</td>
       <td>0.04</td>
+      <td>0.87</td>
+      <td>0.00</td>
+      <td>0.03</td>
       <td>0.00</td>
       <td>0.00</td>
       <td>0.00</td>
@@ -14841,7 +14841,7 @@ Name: outcome, dtype: int64</pre>
       <td>0.00</td>
       <td>0.00</td>
       <td>0.00</td>
-      <td>0.97</td>
+      <td>0.94</td>
       <td>0.00</td>
       <td>0.04</td>
       <td>0.01</td>
@@ -14849,13 +14849,13 @@ Name: outcome, dtype: int64</pre>
     </tr>
     <tr>
       <th>Shirt</th>
-      <td>0.14</td>
+      <td>0.15</td>
       <td>0.00</td>
       <td>0.11</td>
-      <td>0.02</td>
-      <td>0.07</td>
+      <td>0.03</td>
+      <td>0.08</td>
       <td>0.00</td>
-      <td>0.80</td>
+      <td>0.61</td>
       <td>0.00</td>
       <td>0.02</td>
       <td>0.00</td>
@@ -14869,7 +14869,7 @@ Name: outcome, dtype: int64</pre>
       <td>0.00</td>
       <td>0.01</td>
       <td>0.00</td>
-      <td>0.93</td>
+      <td>0.94</td>
       <td>0.00</td>
       <td>0.05</td>
     </tr>
@@ -14883,7 +14883,7 @@ Name: outcome, dtype: int64</pre>
       <td>0.00</td>
       <td>0.01</td>
       <td>0.00</td>
-      <td>0.95</td>
+      <td>0.97</td>
       <td>0.00</td>
     </tr>
     <tr>
@@ -14897,7 +14897,7 @@ Name: outcome, dtype: int64</pre>
       <td>0.00</td>
       <td>0.03</td>
       <td>0.00</td>
-      <td>0.94</td>
+      <td>0.96</td>
     </tr>
   </tbody>
 </table>
@@ -14941,7 +14941,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Class-level performance:</span>
@@ -14960,7 +14960,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[36]:</div>
 
 
 
@@ -14977,7 +14977,7 @@ Name: outcome, dtype: int64</pre>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Overall performance across all classes:</span>
@@ -14996,7 +14996,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[37]:</div>
 
 
 
@@ -15074,7 +15074,7 @@ Name: outcome, dtype: int64</pre>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">():</span>
@@ -15092,7 +15092,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">instructor</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Irina&#39;</span><span class="p">)</span>
@@ -15109,7 +15109,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -15126,7 +15126,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">TA</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Hao&#39;</span><span class="p">)</span>
@@ -15143,7 +15143,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[40]:</div>
 
 
 
@@ -15160,7 +15160,7 @@ Name: outcome, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">instructor</span><span class="p">)</span>
@@ -15176,7 +15176,7 @@ Name: outcome, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
+    <div class="prompt output_prompt">Out[41]:</div>
 
 
 
@@ -15210,7 +15210,7 @@ simplified <code>network.py</code> code from repository:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15238,7 +15238,7 @@ simplified <code>network.py</code> code from repository:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_rows</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -15337,7 +15337,7 @@ simplified <code>network.py</code> code from repository:
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### Miscellaneous helper functions</span>
@@ -15358,7 +15358,7 @@ simplified <code>network.py</code> code from repository:
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Network specs: </span>
@@ -15375,7 +15375,7 @@ simplified <code>network.py</code> code from repository:
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
@@ -15859,6 +15859,262 @@ simplified <code>network.py</code> code from repository:
 0.5240222222222222
 0.5256888888888889
 0.5269777777777778
+0.5295777777777778
+0.5225333333333333
+0.5263111111111111
+0.5248666666666667
+0.5235333333333333
+0.5244666666666666
+0.5256
+0.5222
+0.5232444444444444
+0.5240222222222222
+0.5289333333333334
+0.5246444444444445
+0.5224888888888889
+0.5216666666666666
+0.5258444444444444
+0.5277111111111111
+0.5264222222222222
+0.5247777777777778
+0.5260444444444444
+0.5257333333333334
+0.5264222222222222
+0.5237555555555555
+0.5253111111111111
+0.5265333333333333
+0.5280666666666667
+0.5291555555555556
+0.5255777777777778
+0.5257111111111111
+0.5268888888888889
+0.5248888888888888
+0.5226222222222222
+0.5243333333333333
+0.5240444444444444
+0.5244444444444445
+0.5238444444444444
+0.5210666666666667
+0.5177111111111111
+0.5207555555555555
+0.5236888888888889
+0.5231111111111111
+0.5245555555555556
+0.5284
+0.5287111111111111
+0.5266666666666666
+0.5268
+0.5261777777777777
+0.5286
+0.5294444444444445
+0.5285555555555556
+0.5277333333333334
+0.5275777777777778
+0.5283333333333333
+0.5290444444444444
+0.5285777777777778
+0.5245111111111112
+0.5274666666666666
+0.5279333333333334
+0.5243777777777778
+0.5267111111111111
+0.5246888888888889
+0.5244222222222222
+0.5267555555555555
+0.5311555555555556
+0.5242222222222223
+0.5201111111111111
+0.5217333333333334
+0.5205777777777778
+0.5244666666666666
+0.5242666666666667
+0.5266222222222222
+0.5243333333333333
+0.5190444444444444
+0.5226888888888889
+0.5257333333333334
+0.5225333333333333
+0.5263333333333333
+0.5280444444444444
+0.5283555555555556
+0.5286444444444445
+0.5283333333333333
+0.5252444444444444
+0.5268444444444444
+0.5267111111111111
+0.5293777777777777
+0.5296666666666666
+0.5304444444444445
+0.5289333333333334
+0.5292666666666667
+0.5273111111111111
+0.5291333333333333
+0.5293555555555556
+0.5295111111111112
+0.5293777777777777
+0.5258888888888889
+0.5266
+0.5265555555555556
+0.5262222222222223
+0.5261777777777777
+0.529
+0.5261777777777777
+0.5291333333333333
+0.5263777777777778
+0.5315111111111112
+0.5304888888888889
+0.5280888888888889
+0.5288444444444445
+0.525
+0.5235111111111111
+0.5288444444444445
+0.5314666666666666
+0.5328444444444445
+0.5311555555555556
+0.5275777777777778
+0.5258222222222222
+0.5263777777777778
+0.5254222222222222
+0.5254444444444445
+0.5242
+0.5232
+0.5268222222222222
+0.5283555555555556
+0.5287111111111111
+0.5288222222222222
+0.5225777777777778
+0.5228
+0.522
+0.5242888888888889
+0.5243555555555556
+0.5236222222222222
+0.5242444444444444
+0.5317333333333333
+0.5286222222222222
+0.5259111111111111
+0.5261111111111111
+0.5288444444444445
+0.5316888888888889
+0.5238666666666667
+0.5223777777777778
+0.5213777777777778
+0.5194666666666666
+0.5191333333333333
+0.5152888888888889
+0.5171333333333333
+0.5151777777777777
+0.5178
+0.5177111111111111
+0.5148
+0.5238888888888888
+0.5228666666666667
+0.5241777777777777
+0.5258666666666667
+0.5275111111111112
+0.5279333333333334
+0.5266
+0.5272222222222223
+0.5283333333333333
+0.5270666666666667
+0.53
+0.5311333333333333
+0.5315333333333333
+0.5275333333333333
+0.5277111111111111
+0.5288888888888889
+0.5272666666666667
+0.5280444444444444
+0.5316
+0.5299333333333334
+0.5269777777777778
+0.5280888888888889
+0.5307333333333333
+0.5273333333333333
+0.5269777777777778
+0.5295333333333333
+0.5287555555555555
+0.5299333333333334
+0.5283333333333333
+0.5274
+0.5316666666666666
+0.5311777777777777
+0.5260444444444444
+0.5318
+0.5309111111111111
+0.5273333333333333
+0.5227555555555555
+0.5256444444444445
+0.5256888888888889
+0.5263555555555556
+0.5280444444444444
+0.5297333333333333
+0.531
+0.5304
+0.5283555555555556
+0.5263555555555556
+0.5276666666666666
+0.5285333333333333
+0.5280888888888889
+0.5253555555555556
+0.5234888888888889
+0.5266
+0.5268444444444444
+0.5256888888888889
+0.5236888888888889
+0.5231333333333333
+0.5200666666666667
+0.5195555555555555
+0.5205111111111111
+0.523
+0.5297555555555555
+0.5286666666666666
+0.5258222222222222
+0.5202444444444444
+0.526
+0.5260888888888889
+0.5283777777777777
+0.528
+0.5259555555555555
+0.5256444444444445
+0.5251777777777777
+0.5266222222222222
+0.5240888888888889
+0.5227555555555555
+0.5198222222222222
+0.5264444444444445
+0.5218888888888888
+0.5259333333333334
+0.5259111111111111
+0.5246222222222222
+0.5243555555555556
+0.5229555555555555
+0.5281111111111111
+0.5257111111111111
+0.5235777777777778
+0.5225333333333333
+0.5290888888888889
+0.5280222222222222
+0.5322
+0.5304888888888889
+0.5262888888888889
+0.5315555555555556
+0.5309555555555555
+0.5295777777777778
+0.5293111111111111
+0.5270666666666667
+0.5240444444444444
+0.529
+0.5263111111111111
+0.5258888888888889
+0.5264
+0.5258888888888889
+0.5275111111111112
+0.5278666666666667
+0.5277333333333334
+0.5259555555555555
+0.5229555555555555
+0.5190666666666667
+0.5190666666666667
 </pre>
 </div>
 </div>
@@ -15867,6 +16123,35 @@ simplified <code>network.py</code> code from repository:
 </div>
 
 </div></div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Accuracy at convergence:</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./images/NN-convergence.png" alt="NN convergence"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Is convergence monotonic?</p>
+
+</div>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15876,7 +16161,7 @@ simplified <code>network.py</code> code from repository:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">img_number</span> <span class="o">=</span> <span class="mi">10</span>
@@ -15887,10 +16172,39 @@ simplified <code>network.py</code> code from repository:
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[48]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0.  ],
+       [0.  ],
+       [0.02],
+       [0.01],
+       [0.04],
+       [0.01],
+       [0.16],
+       [0.01],
+       [1.  ],
+       [0.01]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">img_number</span> <span class="o">=</span> <span class="mi">0</span>
@@ -15900,6 +16214,26 @@ simplified <code>network.py</code> code from repository:
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[49]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(&#39;Shirt&#39;, &#39;Pullover&#39;)</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -15913,7 +16247,7 @@ simplified <code>network.py</code> code from repository:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_train_nn</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">res</span><span class="p">]</span>
@@ -15926,7 +16260,7 @@ simplified <code>network.py</code> code from repository:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">conf_mat_nn</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
@@ -15938,14 +16272,43 @@ simplified <code>network.py</code> code from repository:
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[56]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[   0,    0,    5,  709,   22,   12, 3615,    0,  123,   14],
+       [   0,    0,    3, 3924,   60,  121,  366,    0,    8,   18],
+       [   0,    0,   31,   42,  254,    4, 4066,    0,  101,    2],
+       [   0,    0,    2, 3902,  156,    4,  388,    1,   43,    4],
+       [   0,    0,    3,  180, 2057,    3, 2207,    0,   49,    1],
+       [   0,    0,    2,    1,    1, 3509,    8,  670,   71,  238],
+       [   0,    0,    4,  206,  734,    7, 3386,    1,  160,    2],
+       [   0,    0,    0,    0,    0, 1922,    0, 2092,   24,  462],
+       [   0,    0,    0,   34,   21,   36,  115,   16, 4267,   11],
+       [   0,    0,    0,    0,    0,  134,    0,  245,    7, 4114]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">conf_df_nn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conf_mat_nn</span><span class="p">,</span> <span class="n">class_names</span><span class="p">,</span> <span class="n">class_names</span><span class="p">)</span>
-<span class="n">conf_df_pct_nn</span> <span class="o">=</span> <span class="n">conf_df_nn</span><span class="o">/</span><span class="n">conf_df_nn</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">conf_df_pct_nn</span> <span class="o">=</span> <span class="n">conf_df_nn</span><span class="o">/</span><span class="n">conf_df_nn</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">round</span><span class="p">(</span><span class="n">conf_df_pct_nn</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
@@ -15953,10 +16316,208 @@ simplified <code>network.py</code> code from repository:
 </div>
 </div>
 
-</div></section><section>
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[62]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T-shirt/top</th>
+      <th>Trouser</th>
+      <th>Pullover</th>
+      <th>Dress</th>
+      <th>Coat</th>
+      <th>Sandal</th>
+      <th>Shirt</th>
+      <th>Sneaker</th>
+      <th>Bag</th>
+      <th>Ankle boot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>T-shirt/top</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.16</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.80</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Trouser</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.87</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.08</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Pullover</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.06</td>
+      <td>0.00</td>
+      <td>0.90</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Dress</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.87</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.09</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Coat</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.46</td>
+      <td>0.00</td>
+      <td>0.49</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Sandal</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.78</td>
+      <td>0.00</td>
+      <td>0.15</td>
+      <td>0.02</td>
+      <td>0.05</td>
+    </tr>
+    <tr>
+      <th>Shirt</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.16</td>
+      <td>0.00</td>
+      <td>0.75</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Sneaker</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.43</td>
+      <td>0.00</td>
+      <td>0.46</td>
+      <td>0.01</td>
+      <td>0.10</td>
+    </tr>
+    <tr>
+      <th>Bag</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.95</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Ankle boot</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.00</td>
+      <td>0.91</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Anything jump out as reasonable misclassification?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Anything jump out as egregious misclassification?</p>
+
+</div>
+</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compare with confusion matrix from RF:</span>
@@ -15967,6 +16528,188 @@ simplified <code>network.py</code> code from repository:
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[63]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T-shirt/top</th>
+      <th>Trouser</th>
+      <th>Pullover</th>
+      <th>Dress</th>
+      <th>Coat</th>
+      <th>Sandal</th>
+      <th>Shirt</th>
+      <th>Sneaker</th>
+      <th>Bag</th>
+      <th>Ankle boot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>T-shirt/top</th>
+      <td>0.87</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.04</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Trouser</th>
+      <td>0.00</td>
+      <td>0.96</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Pullover</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.83</td>
+      <td>0.01</td>
+      <td>0.11</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Dress</th>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.92</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Coat</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.87</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Sandal</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.94</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.01</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>Shirt</th>
+      <td>0.15</td>
+      <td>0.00</td>
+      <td>0.11</td>
+      <td>0.03</td>
+      <td>0.08</td>
+      <td>0.00</td>
+      <td>0.61</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Sneaker</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.94</td>
+      <td>0.00</td>
+      <td>0.05</td>
+    </tr>
+    <tr>
+      <th>Bag</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.97</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Ankle boot</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.96</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -15974,7 +16717,7 @@ simplified <code>network.py</code> code from repository:
 <p>Should we refactor this code:</p>
 
 <pre><code>conf_df_nn = pd.DataFrame(conf_mat_nn, class_names, class_names)
-conf_df_pct_nn = conf_df_nn/conf_df_nn.sum(axis=0)
+conf_df_pct_nn = conf_df_nn/conf_df_nn.sum(axis=1)
 round(conf_df_pct_nn, 2)</code></pre>
 <p>into a function?</p>
 
@@ -15990,7 +16733,7 @@ round(conf_df_pct_nn, 2)</code></pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Class-level performance:</span>
@@ -16003,10 +16746,42 @@ round(conf_df_pct_nn, 2)</code></pre>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/irina/Documents/Stats_404_W19/Envs/env-stats404-class0/lib/python3.7/site-packages/sklearn/metrics/classification.py:1143: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no predicted samples.
+  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[54]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.45134684144071696</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Class-level performance:</span>
@@ -16016,6 +16791,26 @@ round(conf_df_pct_nn, 2)</code></pre>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[55]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.5190666666666667</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
