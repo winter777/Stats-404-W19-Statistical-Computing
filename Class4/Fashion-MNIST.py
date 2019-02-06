@@ -369,7 +369,7 @@ conf_df
 # In[ ]:
 
 
-conf_df_pct = conf_df/conf_df.sum(axis=0)
+conf_df_pct = conf_df/conf_df.sum(axis=1)
 round(conf_df_pct, 2)
 
 
@@ -660,7 +660,7 @@ conf_mat_nn
 
 
 conf_df_nn = pd.DataFrame(conf_mat_nn, class_names, class_names)
-conf_df_pct_nn = conf_df_nn/conf_df_nn.sum(axis=0)
+conf_df_pct_nn = conf_df_nn/conf_df_nn.sum(axis=1)
 round(conf_df_pct_nn, 2)
 
 
@@ -674,7 +674,7 @@ round(conf_df_pct, 2)
 # Should we refactor this code:
 # ```
 # conf_df_nn = pd.DataFrame(conf_mat_nn, class_names, class_names)
-# conf_df_pct_nn = conf_df_nn/conf_df_nn.sum(axis=0)
+# conf_df_pct_nn = conf_df_nn/conf_df_nn.sum(axis=1)
 # round(conf_df_pct_nn, 2)
 # ```
 # into a function?
