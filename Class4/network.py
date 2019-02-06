@@ -99,14 +99,14 @@ class Network(object):
             nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
         return (nabla_b, nabla_w)
 
-    def evaluate(self, test_data):
-        """Return the number of test inputs for which the neural
-        network outputs the correct result. Note that the neural
-        network's output is assumed to be the index of whichever
-        neuron in the final layer has the highest activation."""
-        test_results = [(np.argmax(self.feedforward(x)), y)
-                        for (x, y) in test_data]
-        return sum(int(x == y) for (x, y) in test_results)
+    def evaluate(self, test_data, accuracy=True):
+        """Return accuracy or final predictions."""
+        test_results = [(np.argmax(self.feedforward(x)), np.argmax(y)) for
+                        (x, y) in test_data]
+        if accuracy:
+            return sum(int(y_pred == y) for (y_pred, y) in test_results)
+        else:
+            return [self.feedforward(x) for (x, y) in test_data]
 
     def cost_derivative(self, output_activations, y):
         """Return the vector of partial derivatives \partial C_x /
