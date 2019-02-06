@@ -18,6 +18,9 @@ import random
 # Third-party libraries
 import numpy as np
 
+random.seed(2019)
+
+
 class Network(object):
 
     def __init__(self, sizes):
