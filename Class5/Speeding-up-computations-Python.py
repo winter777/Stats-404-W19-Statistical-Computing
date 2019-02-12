@@ -328,7 +328,7 @@ get_ipython().run_cell_magic('time', '', "df_dask['UniqueCarrier'].value_counts(
 
 # ### Which was the fastest for getting number of flight paths by carrier?
 
-# ## Speeding-up Embarassingly Parallel Steps
+# ## Speeding-up Embarrassingly Parallel Steps
 
 # From [Class 4](https://github.com/ikukuyeva/Stats-404-W19-Statistical-Computing/blob/master/Class4/Fashion-MNIST.ipynb): We estimated 7 different Random Forest models in serial.
 
@@ -406,7 +406,7 @@ rf_base_parallel4 = RandomForestClassifier(n_estimators=500,
 
 # Why is speed-up not 4x?
 
-# #### b. `joblib` for Embarassingly Parallel Computations
+# #### b. `joblib` for Embarrassingly Parallel Computations
 
 # In[171]:
 
